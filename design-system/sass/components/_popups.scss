@@ -1,0 +1,500 @@
+@use '../abstracts/variables'as vars;
+@use "sass:map";
+@use '../abstracts/extends';
+@use '../abstracts/mediaqueries-mixins'as media;
+
+.overlay {
+    background-color: #161616b6;
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    // padding: 0 20%;
+}
+
+
+.small-popup {
+    max-width: 600px;
+    @extend %popup;
+
+    .text {
+        padding: 1em;
+        text-align: center;
+    }
+
+    div {
+        display: flex;
+
+        p {
+            width: 100%;
+            text-align: center;
+            padding: 1.2em;
+            margin: 0;
+            border-top: 1px solid white;
+
+            &:hover {
+                background-color: map.get($map: vars.$colors, $key: primair-color);
+
+            }
+
+        }
+
+        p+p {
+            border-left: 1px solid white;
+
+            &:hover {
+                border-bottom-right-radius: 10px;
+            }
+
+        }
+
+        p:first-of-type:hover {
+            border-bottom-left-radius: 10px;
+        }
+
+    }
+}
+
+// ___________________________________________________________
+
+
+.create-edit-event {
+    @extend %popup;
+    max-width: 600px;
+    padding: 1.5em;
+    overflow-y: scroll;
+    height: 500px;
+
+    .fa-times {
+        font-size: 26px;
+        position: absolute;
+        right: 1.5em;
+    }
+
+    form {
+
+        input,
+        label {
+            display: block;
+        }
+
+        input {
+            background-color: map.get($map: vars.$colors, $key: inputfileds-popup);
+            border: none;
+            min-height: 30px;
+            width: 100%;
+            border-radius: 5px;
+            color: map.get($map: vars.$colors, $key: white);
+            padding: 0 1em;
+            outline: none;
+        }
+
+        #title {
+            margin: 1em 0;
+        }
+
+        #description {
+            @extend %inputfield-popup;
+            margin-bottom: 2em;
+        }
+
+        input+input {
+            margin: 1em 0;
+        }
+
+        .required {
+            color: map.get($map: vars.$colors, $key: location-event-color);
+            font-size: 20px;
+        }
+
+        div:first-of-type {
+            display: flex;
+            gap: 2em;
+
+            div {
+                width: 100%;
+                display: block;
+
+                p,
+                label {
+                    margin-bottom: 1em;
+                }
+
+                .secundary {
+                    display: inline-block;
+                    // height: 40px;
+                    padding: 0.3em;
+                    width: 100%;
+                    text-align: center;
+                }
+            }
+        }
+
+        .btns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2em;
+
+            button {
+                width: 100%;
+            }
+        }
+    }
+}
+
+// __________________________________________________________
+
+.call {
+    @extend %popup;
+    max-width: 400px;
+    overflow-y: scroll;
+    height: 400px;
+
+    .fixed-header {
+        @extend %fixed-header-popup;
+
+        div {
+            margin: 1em;
+
+            .close {
+                position: absolute;
+                right: 0.5em;
+            }
+        }
+
+        hr {
+            margin-bottom: 0;
+        }
+    }
+
+    .persons {
+        margin: 2em 1em 1em 1em;
+
+        a {
+            display: flex;
+            gap: 2em;
+            align-items: center;
+            text-decoration: none;
+
+            img {
+                @extend %profile-img-list
+            }
+        }
+
+        a+a {
+            margin-top: 2em;
+        }
+    }
+
+}
+
+// _____________________________________________________________
+
+.invite-friends {
+    @extend %popup;
+    max-width: 400px;
+    overflow-y: scroll;
+    height: 400px;
+    padding: 1em;
+    padding-top: 0;
+
+    i:hover {
+        color: map.get($map: vars.$colors, $key: selected);
+        transition: 0.5s;
+    }
+
+    &__fixed-header {
+        @extend %fixed-header-popup;
+
+        div:first-of-type {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1em;
+
+            h2 {
+                margin: 0;
+            }
+
+            i {
+                font-size: 24px;
+            }
+        }
+
+        .search {
+            @extend %inputfield-popup;
+
+            input {
+                background-color: map.get($map: vars.$colors, $key: inputfileds-popup);
+                border: none;
+                margin-top: 0.2em;
+                margin-left: 1em;
+                color: map.get($map: vars.$colors, $key: white);
+            }
+        }
+    }
+
+    .friends {
+        margin-top: 2em;
+
+        .person {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            div {
+                display: flex;
+                gap: 2em;
+                align-items: center;
+            }
+
+            img {
+                @extend %profile-img-list;
+
+            }
+        }
+
+        div+div {
+            margin-top: 1em;
+        }
+    }
+}
+
+// ________________________________________________________________
+
+.meldet-form {
+    .primair {
+        display: block;
+        margin: 0 auto;
+    }
+
+    .fixed-header {
+        padding-top: 1em;
+        text-align: center;
+
+    }
+
+    &__part-1 {
+        @extend %popup;
+
+        hr {
+            margin-bottom: 0;
+        }
+
+        form {
+            padding: 1em 2em 2em 2em;
+
+            input,
+            label,
+            textarea {
+                display: block;
+                width: 100%;
+            }
+
+            label {
+                margin-bottom: 1em;
+            }
+
+            input,
+            textarea {
+                @extend %inputfield-popup;
+                margin-bottom: 2em;
+            }
+
+            textarea {
+                padding: 0.5em;
+                height: 7em;
+            }
+        }
+    }
+
+    &__part-2 {
+        @extend %popup;
+        max-width: 600px;
+        overflow-y: scroll;
+        height: 500px;
+        padding-bottom: 2em;
+
+        .fixed-header {
+            @extend %fixed-header-popup;
+        }
+
+        form {
+            display: flex;
+            gap: 2em;
+            margin-bottom: 2em;
+
+            div {
+                width: 100%;
+
+                input {
+                    margin-right: 0.5em;
+                }
+
+                input,
+                label {
+                    margin-bottom: 0.3em;
+                }
+            }
+        }
+
+        h4,
+        .left {
+            margin-left: 2em;
+        }
+
+        .right {
+            margin-right: 2em;
+        }
+    }
+}
+
+
+// _____________________________________________________________
+
+.warning-sending-location {
+    @extend %popup;
+    background-color: rgba(172, 255, 47, 0);
+    text-align: center;
+    max-width: 500px;
+
+    .warning {
+        background-color: map.get($map: vars.$colors, $key: warning-color);
+        border-radius: 10px 10px 0 0;
+
+        p {
+            padding: 2em;
+            margin-bottom: 0;
+        }
+    }
+
+    .deactivate {
+        // height: 50px;
+        border-radius: 0 0 10px 10px;
+        background-color: map.get($map: vars.$colors, $key: popup-background-color);
+
+        p {
+            margin: 0;
+            padding: 1em;
+        }
+
+        &:hover {
+            background-color: rgba(164, 131, 255, 0.986);
+            transition: 0.5s;
+            cursor: pointer;
+        }
+    }
+}
+
+// ___________________________________________________________________
+
+.warning-top {
+    background-color: map.get($map: vars.$colors, $key: warning-color);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 3;
+
+    p {
+        padding: 2em;
+        font-weight: bold;
+        text-align: center;
+        max-width: 700px;
+        margin: 0 auto;
+    }
+}
+
+// ______________________________________________________________
+
+.directions-vehicles-choice {
+    background-color: map.get($map: vars.$colors, $key: directions-color);
+    text-align: center;
+    padding: 2em;
+    max-width: 500px;
+    margin: 0 auto;
+    border-radius: 20px;
+    @extend %popup;
+
+    h3 {
+        text-transform: uppercase;
+    }
+
+    .vehicles {
+        display: flex;
+        justify-content: space-between;
+        max-width: 250px;
+        margin: 3em auto 0 auto;
+
+        i {
+            font-size: 24px;
+
+            &:hover {
+                cursor: pointer;
+                color: map.get($map: vars.$colors, $key: selected);
+                transition: 0.2s;
+            }
+        }
+    }
+}
+
+
+// __________________________________________________________
+
+.route-duration {
+    background-color: map.get($map: vars.$colors, $key: directions-color);
+    text-align: center;
+    padding: 1em;
+    position: fixed;
+    width: 100%;
+    bottom: 6em;
+    z-index: 4;
+    
+
+    @include media.for-tablet-portrait-up {
+        bottom: 0;
+    }
+
+    .close {
+        position: absolute;
+        right: 2em;
+        top: 0.5em;
+    }
+}
+
+// _______________________________________________________________
+
+.directions {
+    background-color: map.get($map: vars.$colors, $key: directions-color);
+    position: fixed;
+    padding: 1em 2em;
+    border-radius: 20px;
+    top: 0;
+    width: 90%;
+    max-width: 500px;
+    margin: 1em auto 0 auto;
+    border: 1px solid map.get($map: vars.$colors, $key: white);
+    z-index: 4;
+
+    div {
+        display: flex;
+        align-items: center;
+        max-width: 400px;
+        margin: 0 auto;
+
+        img {
+            width: 15%;
+        }
+    
+        .text {
+            width: 100%;
+            margin-left: 2em;
+            font-weight: bold;
+        }
+    }
+
+    
+}

@@ -1,0 +1,62 @@
+@use '../abstracts/extends';
+@use '../abstracts/variables'as vars;
+@use "sass:map";
+
+
+// ____________________________________________________________________
+.event{
+
+    @extend %event-card;
+
+    .event-on-calendar-page:last-of-type{
+        margin-bottom: 2em;
+    }
+}
+
+
+
+// _____________________________________________________
+.invitation{
+    @extend %event-card;
+    .event-on-calendar-page{
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+
+        .img-event{
+            background-image: url("https://static1.qmusic.medialaancdn.be/1/3b/56/33/1497252/adele-.jpeg")
+        }
+    }
+
+    .btns{
+        background-color: map.get($map: vars.$colors, $key: directions-color);
+        display: flex;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        max-width: 600px;
+        margin: 0 auto;
+
+        p{
+            width: 100%;
+            text-align: center;
+            padding: 1em;
+            margin: 0;
+
+            &:hover{
+                background-color: rgba(164, 131, 255, 0.986);
+                // transition: 0.5s;
+                cursor: pointer;
+                border-bottom-left-radius: 20px;
+            }
+        }
+
+        p+p{
+            border-left: 2px solid rgba(255, 255, 255, 0.404);
+            &:hover{
+                border-bottom-left-radius: 0px;
+                border-bottom-right-radius: 20px; 
+            }
+        }
+    }
+}
+
+

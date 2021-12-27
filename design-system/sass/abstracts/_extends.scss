@@ -1,0 +1,124 @@
+@use '../abstracts/variables'as vars;
+@use "sass:map";
+
+%button {
+    font-family: vars.$font-family;
+    border-radius: 20px;
+    padding: 1em 0;
+    color: map.get($map: vars.$colors, $key: white);
+    // padding: 1em 5em;
+    width: 80%;
+    max-width: 260px;
+}
+
+%primary {
+    color: map.get($map: vars.$colors, $key:white);
+    background-color: map.get($map: vars.$colors, $key: primair-color);
+    border: none;
+
+    &:hover {
+        background-color: rgba(164, 131, 255, 0.986);
+        transition: 0.5s;
+        cursor: pointer;
+    }
+}
+
+%sos-btn {
+    padding: 1em;
+    background-color: map.get($map: vars.$colors, $key: warning-color);
+    border: none;
+    border-radius: 20px;
+    color: map.get($map: vars.$colors, $key: white);
+    text-transform: uppercase;
+    font-family: vars.$font-family;
+    font-weight: 600;
+}
+
+
+// _________popups__________
+
+%popup {
+    width: 90%;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+
+    border: 1px solid map.get($map: vars.$colors, $key: white);
+    border-radius: 10px;
+    background-color: map.get($map: vars.$colors, $key: popup-background-color);
+    z-index: 4;
+}
+
+%profile-img-list {
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    object-fit: cover;
+}
+
+%inputfield-popup {
+    background-color: map.get($map: vars.$colors, $key: inputfileds-popup);
+    border: none;
+    min-height: 30px;
+    width: 100%;
+    border-radius: 5px;
+    color: map.get($map: vars.$colors, $key: white);
+    padding: 0 1em;
+    outline: none;
+}
+
+%fixed-header-popup{
+    position: sticky;
+    padding-top: 1em;
+    top: 0;
+    left: 0;
+    background-color: map.get($map: vars.$colors, $key: popup-background-color);
+}
+
+// cards events
+
+%event-card{
+    .event-on-calendar-page+.event-on-calendar-page{
+        margin-top: 2em;
+    }
+    
+    .event-on-calendar-page{
+        display: flex;
+        background-position: center;
+        width: 100%;
+        max-width: 600px;
+        overflow: hidden;
+        position: relative;
+        margin-top: 0em;
+        border-radius: 20px;
+        margin: 0 auto;
+            
+            
+            .img-event{
+                background-image: url("http://www.gskristallijn.be/wp-content/uploads/2015/08/slide-ice-skating-1160x400.jpg");
+                filter: blur(30px);
+               width: 110%;
+               height: 200px;
+               object-fit: cover;
+                object-fit: cover;
+                z-index: -1;
+                position: absolute;
+            }
+        
+    
+        img{
+            width: 30%;
+            object-position: center;
+            object-fit: cover;
+        }
+        &__info{
+            padding: 1em 2em;
+            width: 70%;
+            position: relative;
+        }
+    
+    
+    }
+}

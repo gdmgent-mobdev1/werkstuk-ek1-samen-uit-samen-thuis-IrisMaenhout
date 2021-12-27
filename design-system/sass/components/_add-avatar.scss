@@ -1,0 +1,42 @@
+@use '../abstracts/variables'as vars;
+@use "sass:map";
+
+.image-avatar-div {
+    margin: 0 auto;
+    width: 150px;
+    height: 150px;
+    .img-avatar {
+        display: block;
+        width: 130px;
+        height: 130px;
+        border-radius: 100%;
+        object-fit: cover;
+        object-position: center;
+        margin: 0 auto;
+        position: absolute;
+    }
+
+    label {
+        i {
+            display: inline-block;
+            background-color: map.get($map: vars.$colors, $key: tertiary-color);
+            font-size: 20px;
+            padding: 0.5em;
+            border-radius: 100%;
+            position: relative;
+            margin-top: 5em;
+            margin-left: 4.5em;
+        
+            
+            &:hover{
+                background-color: map.get($map: vars.$colors, $key: white);
+                color: map.get($map: vars.$colors, $key: tertiary-color);
+                transition: 0.5s;
+            }
+        }
+
+        input {
+            display: none;
+        }
+    }
+}

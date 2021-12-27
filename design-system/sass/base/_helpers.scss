@@ -1,0 +1,16 @@
+@use '../abstracts/variables' as vars;
+@use "sass:map";
+.flex{
+    display: flex;
+}
+
+.selected{
+    color: map.get($map: vars.$colors, $key: selected);
+    p{
+        color: map.get($map: vars.$colors, $key: selected);
+    }
+}
+
+.hide{
+    display: none;
+}

@@ -1,0 +1,189 @@
+@use '../abstracts/variables'as vars;
+@use "sass:map";
+@use '../abstracts/mediaqueries-mixins'as media;
+
+.margin-left-title {
+    margin-left: 5%;
+}
+
+.header-event {
+    display: flex;
+    background-position: center;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    margin-top: 0em;
+    margin: 0 auto;
+
+    .img-event {
+        background-image: url("https://cdn.filmtotaal.nl/images/covers/ay4r53s2ip.jpg");
+        width: 100%;
+        height: 500px;
+        object-fit: contain;
+        z-index: -1;
+        position: absolute;
+        background-size: 100%;
+        object-position: center;
+        background-position: center;
+        background-repeat: no-repeat;
+        filter: blur(30px);
+
+    }
+
+    .content {
+        margin: 0 auto;
+        max-width: 450px;
+        padding: 2em 1em;
+
+        .fa-chevron-left {
+            font-size: 24px;
+            cursor: pointer;
+
+            &:hover {
+                color: map.get($map: vars.$colors, $key: primair-color);
+                transition: 0.3s;
+            }
+
+        }
+
+        .btns-left {
+            position: absolute;
+            right: 1.5em;
+
+            button {
+                display: block;
+            }
+
+            button+button {
+                margin-top: 0.5em;
+            }
+        }
+
+        img {
+            display: block;
+            // width: 50%;
+            margin: 0 auto;
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 20px;
+        }
+
+        .info {
+            .title {
+                text-align: center;
+                vertical-align: text-top;
+            }
+
+            .time-date {
+                i {
+                    margin-right: 1em;
+                    font-size: 24px;
+                }
+            }
+        }
+
+        .transparent-btn-going {
+            background-color: #05050552;
+            border: none;
+            color: map.get($map: vars.$colors, $key: white);
+            font-size: 18px;
+            padding: 0.5em 1em;
+            text-transform: uppercase;
+            border-radius: 10px;
+            float: right;
+
+            &:hover {
+                color: #050505a1;
+                background-color: map.get($map: vars.$colors, $key: white);
+                transition: 0.5s;
+            }
+        }
+    }
+}
+
+.extra-space{
+    height: 2em;
+
+}
+// ___________________________________________________________
+
+.header-while-scrolling {
+    background-position: center;
+    width: 100%;
+    // max-width: 600px;
+    overflow: hidden;
+    position: relative;
+    margin-top: 0em;
+    margin: 0 auto;
+
+    .img-event {
+        background-image: url("https://cdn.filmtotaal.nl/images/covers/ay4r53s2ip.jpg");
+        filter: blur(30px);
+        width: 100%;
+        background-size: 100%;
+        background-repeat: no-repeat;
+        height: 200px;
+        object-fit: cover;
+        z-index: -1;
+        position: absolute;
+    }
+
+    .content {
+        display: flex;
+        gap: 2em;
+        align-items: center;
+        padding: 2em;
+
+        i{
+            font-size: 24px;
+            cursor: pointer;
+
+            &:hover {
+                color: map.get($map: vars.$colors, $key: primair-color);
+                transition: 0.3s;
+            }
+        }
+
+        div {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 80%;
+            @include media.for-phone-only {
+                gap: 1em;
+            }
+
+            h2 {
+                width: 100%;
+                margin: 0;
+                // margin-left: ;
+            }
+
+            .transparent-btn-going {
+                width: 100%;
+                max-width: 200px;
+                display: inline-block;
+                background-color: #05050552;
+                border: none;
+                color: map.get($map: vars.$colors, $key: white);
+                font-size: 14px;
+                padding: 0.5em 0.5em;
+                text-transform: uppercase;
+                border-radius: 10px;
+                @include media.for-phone-only {
+                    width: 130px;
+
+                }
+
+                &:hover {
+                    color: #050505a1;
+                    background-color: map.get($map: vars.$colors, $key: white);
+                    transition: 0.5s;
+                }
+            }
+        }
+
+    }
+}

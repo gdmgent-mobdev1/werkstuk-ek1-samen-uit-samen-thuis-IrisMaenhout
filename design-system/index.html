@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
+    <script src="https://kit.fontawesome.com/f677a13f9c.js" crossorigin="anonymous"></script>
+    <title>Design system</title>
+</head>
+
+<body>
+
+    <div class="nav-container">
+        <!-- nav -->
+        <nav>
+            <h2 class="logo">Samen uit, samen thuis</h2>
+            <ul>
+                <li>
+                    <a href="#typography">
+                        <div class="icon">
+                            <i class="fas fa-font"></i>
+                        </div>
+                        <p>Typography</p>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#color">
+                        <div class="icon"><i class="fas fa-palette"></i></div>
+                        <p>Color</p>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#components">
+                        <div class="icon"><i class="fas fa-puzzle-piece"></i></div>
+                        <p>Components</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#layout">
+                        <div class="icon"><i class="fas fa-file-alt"></i></i></div>
+                        <p>Layout</p>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+
+
+    <div class="container" id=typography>
+        <h1>Hello world</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim sed sint delectus id atque, beatae fugit nobis.
+            Officia et quia iusto assumenda quas voluptas quis mollitia, necessitatibus, esse quo asperiores?</p>
+        <h2>Hello world</h2>
+        <h3>Hello world</h3>
+        <h4>Hello world</h4>
+        <h5>Hello world</h5>
+        <h6>Hello world</h6>
+
+
+    </div>
+    <hr>
+
+    <div class="container" id="color">
+        <h2 class="titel-design-system">Colors</h2>
+        <div class="colors">
+            <div class="color background-color"></div>
+            <div class="color nav-background-color"></div>
+            <div class="color white"></div>
+            <div class="color selected"></div>
+            <div class="color primair-color"></div>
+            <div class="color secundary-color"></div>
+            <div class="color tertiary-color"></div>
+            <div class="color directions-color"></div>
+            <div class="color popup-background-color"></div>
+            <div class="color inputfileds-popup"></div>
+            <div class="color inputfields"></div>
+            <div class="color safe"></div>
+            <div class="color warning-color"></div>
+            <div class="color location-event-color"></div>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="overlay hide"></div>
+    <div class="container">
+        <h2 class="titel-design-system" id="components">Components</h2>
+
+        <h3 class="titel-design-system">Buttons</h3>
+        <div class="btns">
+            <button class="primair">Log in</button>
+            <button class="secundary">Registreer</button>
+            <button class="login-externe-provider"><i class="fab fa-google"></i></button>
+            <a class="link">Registreer je hier</a>
+
+            <button class="delete-btn"><span>Gebeurtenis verwijderen</span></button>
+            <button class="close"><i class="fas fa-times"></i></button>
+
+            <button class="btn-header-event"><i class="fas fa-pencil-alt"></i></button>
+
+            <button class="sos"><span>Help me!!</span></button>
+            <button class="safe-btn"><span>I'm safe</span></button>
+            <button class="directions-call"><i class="fas fa-phone-alt"></i></button>
+            <button class="directions-call"><i class="fas fa-directions"></i></button>
+        </div>
+
+        <h3 class="subtitel-design-system">Calendar</h3>
+        <div class="calendar-container">
+            <div class="calendar">
+                <div class="month">
+                    <i class="fas fa-chevron-left"></i>
+                    <h3 class="date"></h3>
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+                <div class="weekdays">
+                    <div>MA</div>
+                    <div>DI</div>
+                    <div>WOE</div>
+                    <div>DO</div>
+                    <div>VRIJ</div>
+                    <div>ZA</div>
+                    <div>ZO</div>
+                </div>
+
+                <div class="days">
+                </div>
+            </div>
+        </div>
+
+        <h3 class="titel-design-system">Cards</h3>
+
+        <!-- Events -->
+        <!-- <div class="relative"> -->
+        <div class="event">
+            <div class="event-on-calendar-page">
+                <img src="http://www.gskristallijn.be/wp-content/uploads/2015/08/slide-ice-skating-1160x400.jpg"
+                    alt="event">
+                <div class="img-event"></div>
+
+                <div class="event-on-calendar-page__info">
+                    <h4 class="event-on-calendar-page__title">Schaatsen in kristallijn</h4>
+                    <p class="event-on-calendar-page__location">Warmoezeniersweg 20, Gent</p>
+                    <p>12-12-2022 | 14:00</p>
+                </div>
+            </div>
+            <!-- </div> -->
+
+            <div class="event-on-calendar-page">
+                <img src="http://www.gskristallijn.be/wp-content/uploads/2015/08/slide-ice-skating-1160x400.jpg"
+                    alt="event">
+                <div class="img-event"></div>
+
+                <div class="event-on-calendar-page__info">
+                    <h4 class="event-on-calendar-page__title">Schaatsen in kristallijn</h4>
+                    <p class="event-on-calendar-page__location">Warmoezeniersweg 20, Gent</p>
+                    <p>12-12-2022 | 14:00</p>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="invitation">
+            <div class="event-on-calendar-page">
+                <img src="https://static1.qmusic.medialaancdn.be/1/3b/56/33/1497252/adele-.jpeg" alt="event">
+                <div class="img-event"></div>
+
+                <div class="event-on-calendar-page__info">
+                    <h4 class="event-on-calendar-page__title">Concert Adele</h4>
+                    <p class="event-on-calendar-page__location">La Madeleine, Brussel</p>
+                    <p>25-03-2022 | 20:00</p>
+                </div>
+            </div>
+            <div class="btns">
+                <p>Weiger</p>
+                <p>Bevestig</p>
+            </div>
+
+        </div>
+
+        <!-- popups -->
+        <h3 class="titel-design-system">popups</h3>
+        <button class="secundary show-small-popup">Toon kleine popup</button>
+        <button class="secundary show-edit-event">Update/ verwijder of creeër een eventement</button>
+        <button class="secundary show-call-popup">Bel een vriend</button>
+        <button class="secundary show-invite-user">Nodig een vriend uit</button>
+        <button class="secundary show-meldet-popup">Stuur een melding naar meldet</button>
+
+
+        <!-- small popup -->
+        <div class="small-popup hide">
+            <p class="text">Weet je zeker dat je dit event wilt verwijderen?</p>
+            <div>
+                <p class="yes">JA</p>
+                <p class="no">NEE</p>
+            </div>
+        </div>
+
+        <!-- create/ update or remove an event -->
+        <div class="create-edit-event hide">
+            <i class="fas fa-times"></i>
+            <h1>Evenement creëren</h1>
+
+            <form>
+                <label for="title">Titel <span class="required">*</span></label>
+                <input type="text" id="title" name="titel" required>
+                <div>
+                    <div>
+                        <label for="date">Datum <span class="required">*</span></label>
+                        <input type="date" id="date" name="date" required>
+                    </div>
+
+                    <div>
+                        <label for="upload">
+                            <p>Foto <span class="required">*</span></p>
+                            <span class="secundary" aria-hidden="true">Voeg een foto toe</span>
+                            <input type="file" id="upload" style="display:none" required>
+                        </label>
+                    </div>
+
+
+                </div>
+                <p>Locatie <span class="required">*</span></p>
+                <div class="location">
+                    <input type="text" id="street-nr" required placeholder="Straat + nr">
+                    <input type="text" id="city" required placeholder="Stad">
+                </div>
+
+                <p>Beschrijving</p>
+                <textarea name="description" id="description"></textarea>
+
+                <div class="btns">
+                    <button class="delete-btn"><span>Gebeurtenis verwijderen</span></button>
+                    <button class="primair">Creeër</button>
+                </div>
+
+            </form>
+        </div>
+
+        <!-- Call seomeone within your group -->
+
+        <div class="call hide">
+            <div class="fixed-header">
+                <div>
+                    <button class="close"><i class="fas fa-times"></i></button>
+                    <h2>Bellen naar:</h2>
+                </div>
+                <hr>
+            </div>
+            <div class="persons">
+                <a class="person" href="tel:0489034493">
+                    <img src="images/politie.png" alt="bel politie">
+                    <p>Politie</p>
+                </a>
+                <a class="person" href="tel:0489034493">
+                    <img src="https://www.thenews.com.pk/assets/uploads/updates/2021-01-13/773676_9402039_294840_094028_updates_updates.jpg"
+                        alt="bel politie">
+                    <p>Politie</p>
+                </a>
+                <a class="person" href="tel:0489034493">
+                    <img src="https://images.unsplash.com/photo-1494708001911-679f5d15a946?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+                        alt="bel politie">
+                    <p>Politie</p>
+                </a>
+                <a class="person" href="tel:0489034493">
+                    <img src="images/politie.png" alt="bel politie">
+                    <p>Politie</p>
+                </a>
+                <a class="person" href="tel:0489034493">
+                    <img src="https://www.thenews.com.pk/assets/uploads/updates/2021-01-13/773676_9402039_294840_094028_updates_updates.jpg"
+                        alt="bel politie">
+                    <p>Politie</p>
+                </a>
+                <a class="person" href="tel:0489034493">
+                    <img src="https://images.unsplash.com/photo-1494708001911-679f5d15a946?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+                        alt="bel politie">
+                    <p>Politie</p>
+                </a>
+            </div>
+        </div>
+
+
+        <!-- invite a friend-->
+        <div class="invite-friends hide">
+            <div class="invite-friends__fixed-header">
+                <div>
+                    <h2>Vrienden uitnodigen</h2>
+                    <i class="fas fa-times"></i>
+                </div>
+                <div class="search">
+                    <i class="fas fa-search"></i>
+                    <input type="search" placeholder="Zoek een persoon">
+                </div>
+            </div>
+
+            <div class="friends">
+                <div class="person">
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1494708001911-679f5d15a946?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+                            alt="bel politie">
+                        <p>Ben clark</p>
+                    </div>
+                    <i class="fas fa-user-plus"></i>
+                </div>
+                <div class="person">
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1494708001911-679f5d15a946?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+                            alt="bel politie">
+                        <p>Ben clark</p>
+                    </div>
+                    <i class="fas fa-user-plus"></i>
+                </div>
+                <div class="person">
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1494708001911-679f5d15a946?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+                            alt="bel politie">
+                        <p>Ben clark</p>
+                    </div>
+                    <i class="fas fa-user-plus"></i>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="meldet-form">
+            <div class="meldet-form__part-1 hide">
+                <div class="fixed-header">
+                    <h2>Melding naar meldet</h2>
+                    <hr>
+                </div>
+                <form>
+                    <label for="title">Titel/ keywords</label>
+                    <input type="text" id="title" name="titel" required>
+                    <p>Beschrijving (optioneel)</p>
+                    <textarea name="description" id="description"
+                        placeholder="Beschrijf waarom je je onveilig voelde"></textarea>
+                    <button class="primair continue-btn-meldet">Ga verder</button>
+                </form>
+            </div>
+
+            <div class="meldet-form__part-2 hide">
+                <div class="fixed-header">
+                    <h2>Melding naar meldet</h2>
+                    <hr>
+                </div>
+                <h4>Categorie:</h4>
+                <form>
+                    <div class="left">
+                        <input type="checkbox" id="Alloism" name="Alloism" value="Alloism">
+                        <label for="Alloism">Alloism</label><br>
+                        <input type="checkbox" id="Ageism" name="Ageism" value="Ageism">
+                        <label for="Ageism">Ageism</label><br>
+                        <input type="checkbox" id="Ableism" name="Ableism" value="Ableism">
+                        <label for="Ableism">Ableism</label><br>
+                        <input type="checkbox" id="Anti-blackness" name="Anti-blackness" value="Anti-blackness">
+                        <label for="Anti-blackness">Anti-blackness</label><br>
+                        <input type="checkbox" id="Antisemitism" name="Antisemitism" value="Antisemitism">
+                        <label for="Antisemitism">Antisemitism</label><br>
+                        <input type="checkbox" id="Biphobia" name="Biphobia" value="Biphobia">
+                        <label for="Biphobia">Biphobia</label><br>
+                        <input type="checkbox" id="Catcalling" name="Catcalling" value="Catcalling">
+                        <label for="Catcalling">Catcalling</label><br>
+                        <input type="checkbox" id="Classism" name="Classism" value="Classism">
+                        <label for="Classism">Classism</label><br>
+                        <input type="checkbox" id="Enbyphobia" name="Enbyphobia" value="Enbyphobia">
+                        <label for="Enbyphobia">Enbyphobia</label><br>
+                        <input type="checkbox" id="Ethnocentrism" name="Ethnocentrism" value="Ethnocentrism">
+                        <label for="Ethnocentrism">Ethnocentrism</label><br>
+                        <input type="checkbox" id="Eugenics" name="Eugenics" value="Eugenics">
+                        <label for="Eugenics">Eugenics</label><br>
+                        <input type="checkbox" id="Fatphobia" name="Fatphobia" value="Fatphobia">
+                        <label for="Fatphobia">Fatphobia</label><br>
+                        <input type="checkbox" id="Homophobia" name="Homophobia" value="Homophobia">
+                        <label for="Homophobia">Homophobia</label><br>
+                        <input type="checkbox" id="Toxic masculinity" name="Toxic masculinity"
+                            value="Toxic masculinity">
+                        <label for="Toxic masculinity">Toxic masculinity</label><br>
+                        <input type="checkbox" id="Transphobia" name="Transphobia" value="Transphobia">
+                        <label for="Transphobia">Transphobia</label><br>
+                        <input type="checkbox" id="Whorephobia" name="Whorephobia" value="Whorephobia">
+                        <label for="Whorephobia">Whorephobia</label><br>
+                    </div>
+                    <div class="right">
+                        <input type="checkbox" id="Islamphobia" name="Islamphobia" value="Islamphobia">
+                        <label for="Islamphobia">Islamphobia</label><br>
+                        <input type="checkbox" id="Lesbophobia" name="Lesbophobia" value="Lesbophobia">
+                        <label for="Lesbophobia">Lesbophobia</label><br>
+                        <input type="checkbox" id="Misogyny" name="Misogyny" value="Misogyny">
+                        <label for="Misogyny">Misogyny</label><br>
+                        <input type="checkbox" id="Nativism" name="Nativism" value="Nativism">
+                        <label for="Nativism">Nativism</label><br>
+                        <input type="checkbox" id="Queerphobia" name="Queerphobia" value="Queerphobia">
+                        <label for="Queerphobia">Queerphobia</label><br>
+                        <input type="checkbox" id="Racism" name="Racism" value="Racism">
+                        <label for="Racism">Racism</label><br>
+                        <input type="checkbox" id="Religious imperialism" name="Religious imperialism"
+                            value="Religious imperialism">
+                        <label for="Religious imperialism">Religious imperialism</label><br>
+                        <input type="checkbox" id="Sexism" name="Sexism" value="Sexism">
+                        <label for="Sexism">Sexism</label><br>
+                        <input type="checkbox" id="Sizeism" name="Sizeism" value="Sizeism">
+                        <label for="Sizeism">Sizeism</label><br>
+                        <input type="checkbox" id="Stigmatization of addiction" name="Stigmatization of addiction"
+                            value="Stigmatization of addiction">
+                        <label for="Stigmatization of addiction">Stigmatization of addiction</label><br>
+                        <input type="checkbox" id="Stigmatization of homelessess" name="Stigmatization of homelessess"
+                            value="Stigmatization of homelessess">
+                        <label for="Stigmatization of homelessess">Stigmatization of homelessess</label><br>
+
+                    </div>
+                </form>
+                <button class="primair send-btn-meldet">Verstuur</button>
+            </div>
+        </div>
+        <h4 class="titel-design-system">Warning popups</h4>
+        <button class="secundary show-warning-sending-location">Ik ben in nood!</button>
+        <button class="secundary show-warning-top">Toon waarschuwing</button>
+        <button class="secundary hide-warning-top hide">Verberg waarschuwing</button>
+
+        <div class="warning-sending-location hide">
+            <div class="warning">
+                <p>Je vrienden krijgen een melding binnen <b>3s</b></p>
+            </div>
+            <div class="deactivate">
+                <p>Deactiveren</p>
+            </div>
+        </div>
+
+
+        <h4 class="titel-design-system">Routebeschrijving popups</h4>
+        <button class="secundary show-vehicles-options">Toon routebeschrijving</button>
+
+        <div class="directions-vehicles-choice hide">
+            <h3>Routebeschrijving</h3>
+            <p>Van huidige locatie tot Kinepolis Gent</p>
+            <div class="vehicles">
+                <i class="fas fa-car"></i>
+                <i class="fas fa-subway"></i>
+                <i class="fas fa-biking"></i>
+                <i class="fas fa-walking"></i>
+            </div>
+        </div>
+
+        <div class="directions hide">
+            <div>
+                <img src="images/turn-right -arrow.png" alt="arrow">
+                <p class="text">Sla recht af naar de Groeneweg</p>
+            </div>
+        </div>
+
+        <h3 class="titel-design-system">Form</h3>
+        <form class="register-login-form">
+            <label for="firstname">Voornaam</label>
+            <input type="text" id="firstname" name="firstname">
+
+            <label for="lastname">Achternaam</label>
+            <input type="text" id="lastname" name="lastname">
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email">
+
+            <label for="password">Wachtwoord</label>
+            <input type="password" id="password" name="password">
+
+
+            <button class="primair">Registreer</button>
+
+        </form>
+
+    </div>
+
+    <div class="warning-top hide">
+        <p>Er is een melding gestuurd naar je vrienden</p>
+    </div>
+    <div class="route-duration hide">
+        <button class="close"><i class="fas fa-times"></i></button>
+        <h2>15:32</h2>
+        <p>32min - 22km</p>
+    </div>
+
+    <!-- Header events  -->
+    <h3 class="titel-design-system margin-left-title">Headers event pagina</h3>
+    <div class="header-event">
+        <div class="img-event"></div>
+        <div class="content">
+            <i class="fas fa-chevron-left"></i>
+            <div class="btns-left">
+                <button class="btn-header-event"><i class="fas fa-pencil-alt"></i></button>
+                <button class="btn-header-event"><i class="fas fa-user-plus"></i></button>
+                <button class="btn-header-event"><i class="fas fa-user-minus"></i></button>
+            </div>
+
+
+            <img src="https://cdn.filmtotaal.nl/images/covers/ay4r53s2ip.jpg" alt="afbeelding event">
+            <div class="info">
+                <h1 class="title">Film bijkijken in de cinema</h1>
+                <div class="time-date">
+                    <p><i class="far fa-calendar-alt"></i>Do 23 December 2021</p>
+                    <p><i class="far fa-clock"></i>20:30 - 22:30</p>
+                </div>
+            </div>
+            <button class="transparent-btn-going">I'm going</button>
+        </div>
+    </div>
+
+    <div class="extra-space"></div>
+
+    <div class="header-while-scrolling">
+        <div class="img-event"></div>
+        <div class="content">
+            <i class="fas fa-chevron-left"></i>
+            <div>
+                <h2>Film bijkijken in de cinema</h2>
+                <button class="transparent-btn-going">I want to go</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/calendar.js"></script>
+    <script src="js/show-popup.js"></script>
+</body>
+
+</html>

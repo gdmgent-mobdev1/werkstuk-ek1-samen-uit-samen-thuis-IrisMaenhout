@@ -1,0 +1,63 @@
+@use '../abstracts/variables' as vars;
+@use "sass:map";
+@use '../abstracts/mediaqueries-mixins'as media;
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body{
+    background-color: map.get($map: vars.$colors, $key: background-color);
+
+    padding-bottom: 10em;
+}
+
+.container{
+    width: 90%;
+    margin: 0 auto;
+}
+
+//line
+
+hr{
+    color: vars.$line-color;
+    border: 3px solid;
+    margin: 2em 0;
+}
+
+
+// color divs
+.colors{
+    display: grid;
+    gap: 2em;
+    grid-template-columns: repeat( auto-fit, minmax(5em, 1fr));
+    grid-template-rows: repeat(5, 5em);
+    
+    @include media.for-tablet-portrait-up {
+        grid-template-rows: repeat(3, 5em);
+    }
+}
+
+.color{
+    border-radius: 20px;
+    border: 1px solid white;
+}
+
+@each $name, $color in vars.$colors {
+
+    .#{$name} {
+        background-color: $color;
+    }
+
+}
+
+.subtitel-design-system{
+    margin-top: 2em;
+}
+
+.titel-design-system{
+    margin-top: 2em;
+}

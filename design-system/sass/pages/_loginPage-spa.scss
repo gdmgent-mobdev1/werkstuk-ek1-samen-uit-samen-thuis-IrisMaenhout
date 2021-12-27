@@ -1,0 +1,37 @@
+@use '../abstracts/variables'as vars;
+@use "sass:map";
+
+.register-login-page{
+    h1{
+        text-align: center;
+        margin-bottom: 1em;
+    }
+
+    hr{
+        border-radius: 5px;
+        border-width: 2px;
+    }
+    .word-on-line{
+        width: 50px;
+        text-align: center;
+        margin: -2.5em auto 0 auto;
+        background-color: map.get($map: vars.$colors, $key: background-color);
+    }
+
+    .login-externe-provider{
+        display: block;
+        margin: 3em auto 0 auto;
+        width: 46px;
+    }
+
+    p, a{
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+
+    .to-register-page{
+        margin-top: 3em;
+        margin-bottom: 0.5em;
+    }
+}

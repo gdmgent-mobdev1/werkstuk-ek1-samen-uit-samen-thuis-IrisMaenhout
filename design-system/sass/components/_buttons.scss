@@ -1,0 +1,172 @@
+@use '../abstracts/variables'as vars;
+@use "sass:map";
+@use '../abstracts/extends';
+@use '../abstracts/mediaqueries-mixins'as media;
+
+.primair {
+    background-color: map.get($map: vars.$colors, $key: primair-color);
+    border: none;
+    @extend %button;
+    @extend %primary;
+}
+
+.secundary {
+    @extend %button;
+    background-color: map.get($map: vars.$colors, $key: background-color);
+    border: 1px solid map.get($map: vars.$colors, $key: white);
+
+    &:hover {
+        background-color: map.get($map: vars.$colors, $key: white);
+        color: map.get($map: vars.$colors, $key: background-color);
+        transition: 0.5s;
+        cursor: pointer;
+    }
+}
+
+.link {
+    color: map.get($map: vars.$colors, $key: tertiary-color);
+    text-decoration: underline;
+
+    &:hover {
+        cursor: pointer;
+        color: map.get($map: vars.$colors, $key: white);
+        transition: 0.5s;
+    }
+}
+
+.sos {
+    @extend %sos-btn;
+
+    @include media.for-phone-only {
+        padding: 0.7em;
+    }
+
+    &:hover {
+        background-color: #bb0b0b;
+        transition: 0.5s;
+        cursor: pointer;
+    }
+
+
+    span {
+        display: inline-block;
+        width: 50px;
+
+        @include media.for-phone-only {
+            font-size: 14px;
+        }
+    }
+
+
+}
+
+.safe-btn {
+    @include media.for-phone-only {
+        padding: 0.7em;
+    }
+
+    @extend %sos-btn;
+    background-color: map.get($map: vars.$colors, $key: safe);
+
+    span {
+        display: inline-block;
+        width: 50px;
+
+        @include media.for-phone-only {
+            font-size: 14px;
+        }
+
+    }
+
+    &:hover {
+        background-color: #2805a5;
+        transition: 0.5s;
+        cursor: pointer;
+    }
+}
+
+.login-externe-provider {
+    background-color: map.get($map: vars.$colors, $key: background-color);
+    color: map.get($map: vars.$colors, $key: white);
+    padding: 0.8em;
+    border-radius: 100%;
+    border: 1.5px solid map.get($map: vars.$colors, $key: white);
+
+    &:hover {
+        background-color: map.get($map: vars.$colors, $key: white);
+        color: map.get($map: vars.$colors, $key: background-color);
+        transition: 0.5s;
+        cursor: pointer;
+    }
+}
+
+.delete-btn {
+    background-color: map.get($map: vars.$colors, $key: background-color);
+    border: 1px solid map.get($map: vars.$colors, $key: warning-color);
+    border-radius: 10px;
+    padding: 1em;
+
+    &:hover {
+        span {
+            color: map.get($map: vars.$colors, $key: background-color);
+        }
+
+        background-color: map.get($map: vars.$colors, $key: warning-color);
+        cursor: pointer;
+        transition: 1s;
+    }
+
+    span {
+        display: inline-block;
+        width: 90px;
+        font-weight: 600;
+        color: map.get($map: vars.$colors, $key: warning-color);
+        font-family: vars.$font-family;
+    }
+}
+
+.close {
+    @extend %primary;
+    font-size: 26px;
+    padding: 0.3em;
+    border-radius: 10px;
+}
+
+.directions-call {
+    background-color: map.get($map: vars.$colors, $key:white);
+    color: map.get($map: vars.$colors, $key: tertiary-color);
+    font-size: 32px;
+    width: 82px;
+    height: 69px;
+    border: none;
+    border-radius: 20px;
+
+    @include media.for-phone-only {
+        font-size: 24px;
+        width: 72.5px;
+        height: 55px;
+    }
+
+    &:hover{
+        color: map.get($map: vars.$colors, $key:white);
+        background-color: map.get($map: vars.$colors, $key: tertiary-color);
+        transition: 0.5s;
+        cursor: pointer;
+    }
+}
+
+.btn-header-event {
+    background-color: #05050593;
+    border: none;
+    color: map.get($map: vars.$colors, $key: white);
+    font-size: 20px;
+    padding: 0.5em;
+    border-radius: 100%;
+
+    &:hover{
+        color: #050505c5;
+        background-color: map.get($map: vars.$colors, $key: white);
+        transition: 0.5s;
+        cursor: pointer;
+    }
+}

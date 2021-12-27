@@ -1,0 +1,29 @@
+{
+  "name": "werkstuk-ek1-samen-uit-samen-thuis-irismaenhout",
+  "version": "1.0.0",
+  "description": "SASS in terminal:\r sass ./design-system/sass/main.scss ./design-system/css/main.css --watch",
+  "main": "index.js",
+  "scripts": {
+    "dev": "parcel src/index.html",
+    "build": "parcel build src/index.html --out-dir build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gdmgent-mobdev1/werkstuk-ek1-samen-uit-samen-thuis-IrisMaenhout.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gdmgent-mobdev1/werkstuk-ek1-samen-uit-samen-thuis-IrisMaenhout/issues"
+  },
+  "homepage": "https://github.com/gdmgent-mobdev1/werkstuk-ek1-samen-uit-samen-thuis-IrisMaenhout#readme",
+  "devDependencies": {
+    "parcel-bundler": "^1.12.5"
+  },
+  "dependencies": {
+    "lib": "^4.3.3",
+    "views": "^1.0.2"
+  }
+}
