@@ -1,5 +1,7 @@
 import elements from '../element-factory';
 import contentSpaDiv from '../main';
+import login from '../login';
+import signInGoogle from '../login-google';
 
 function showLoginPage() {
     const registerOrLoginPage = elements.createDiv({
@@ -11,7 +13,8 @@ function showLoginPage() {
     });
 
     const formLoginRegister = elements.createFormTag({
-        classList: "register-login-form"
+        classList: "register-login-form",
+        method: "post"
     });
 
     const emailLabel = elements.createLabel({
@@ -44,6 +47,7 @@ function showLoginPage() {
         onClick(){
             // window.location.href = "#";
             // registerOrLoginPage.remove();
+            login();
         }
     });
 
@@ -55,7 +59,10 @@ function showLoginPage() {
     });
 
     const secundaryBtnLoginPage = elements.createBtn({
-        classList: "login-externe-provider"
+        classList: "login-externe-provider",
+        onClick(){
+            signInGoogle();
+        }
     });
 
     const googleIcon = elements.createI({
@@ -73,8 +80,8 @@ function showLoginPage() {
     })
 
     contentSpaDiv.appendChild(registerOrLoginPage);
-    registerOrLoginPage.append(titleLogIn, formLoginRegister, lineLoginPage, WordOnLine, secundaryBtnLoginPage, pRegister, linkToRegisterPage);
-    formLoginRegister.append(emailLabel, emailInput, passwordLabel, passwordInput, primairBtnLoginPage);
+    registerOrLoginPage.append(titleLogIn, formLoginRegister, primairBtnLoginPage, lineLoginPage, WordOnLine, secundaryBtnLoginPage, pRegister, linkToRegisterPage);
+    formLoginRegister.append(emailLabel, emailInput, passwordLabel, passwordInput);
     secundaryBtnLoginPage.append(googleIcon);
 }
 

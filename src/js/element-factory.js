@@ -85,9 +85,10 @@ const elements = {
         return b;
     },
 
-    createFormTag({classList=''}){
+    createFormTag({classList='', method = "get"}){
         const form = document.createElement('form');
         form.classList = classList;
+        form.method = method;
         return form;
     },
 

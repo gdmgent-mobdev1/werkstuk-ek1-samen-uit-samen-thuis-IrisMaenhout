@@ -14,3 +14,7 @@
 .hide{
     display: none;
 }
+
+.error{
+    color: map.get($map: vars.$colors, $key: warning-color);
+}

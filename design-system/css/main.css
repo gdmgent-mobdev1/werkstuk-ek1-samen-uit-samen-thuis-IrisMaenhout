@@ -14,6 +14,10 @@
   display: none;
 }
 
+.error {
+  color: #ff4a4a;
+}
+
 h1, h2, h3, h4, h5, h6, p {
   color: #FFF;
   font-family: "Lato", sans-serif;
@@ -1200,6 +1204,10 @@ hr {
 .register-login-page .to-register-page {
   margin-top: 3em;
   margin-bottom: 0.5em;
+}
+.register-login-page .primair {
+  display: block;
+  margin: 0 auto;
 }
 
 .add-extra-user-info-page h1 {

@@ -1,8 +1,11 @@
 import elements from '../element-factory';
 import contentSpaDiv from '../main';
 import showAddInfoPage from '../views/extra-info-user-view';
+import register from '../register';
+
 
 function showRegisterPage() {
+    
     const registerOrLoginPage = elements.createDiv({
         classList: "register-login-page container"
     });
@@ -12,10 +15,12 @@ function showRegisterPage() {
     });
 
     const formLoginRegister = elements.createFormTag({
-        classList: "register-login-form"
+        classList: "register-login-form",
+        method: "post"
     });
 
-    // ____________________________________________
+    // _______________________________________________________
+
     const firstNameLabel = elements.createLabel({
         textContent: 'Voornaam',
         labelFor: "firstname"
@@ -40,7 +45,7 @@ function showRegisterPage() {
         name: 'lastname',
         required: true
     });
-    
+
     // ____________________________________________
     const emailLabel = elements.createLabel({
         textContent: 'Email',
@@ -74,8 +79,12 @@ function showRegisterPage() {
         classList: 'primair',
         onClick(){
             // window.location.href = "#";
-            registerOrLoginPage.remove();
-            showAddInfoPage();
+            register();
+            // .then(()=>{
+            //     registerOrLoginPage.remove();
+            //     showAddInfoPage();
+            // });
+            
         }
     });
 
@@ -92,8 +101,9 @@ function showRegisterPage() {
     })
 
     contentSpaDiv.appendChild(registerOrLoginPage);
-    registerOrLoginPage.append(titleLogIn, formLoginRegister, pLogin, linkToLoginPage);
-    formLoginRegister.append(firstNameLabel, firstNameInput, lastNameLabel, lastNameInput,emailLabel, emailInput, passwordLabel, passwordInput, primairBtnLoginPage);
+    registerOrLoginPage.append(titleLogIn, formLoginRegister, primairBtnLoginPage, pLogin, linkToLoginPage);
+    formLoginRegister.append(firstNameLabel, firstNameInput, lastNameLabel, lastNameInput,emailLabel, emailInput, passwordLabel, passwordInput);
 }
+
 
 export default showRegisterPage;

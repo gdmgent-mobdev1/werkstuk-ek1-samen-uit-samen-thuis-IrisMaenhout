@@ -2,6 +2,11 @@ import elements from './element-factory.js';
 import showLoginPage from './views/login-view.js';
 import showRegisterPage from './views/register-view';
 
+// import Router from './router';
+
+// import Navigo from 'navigo'; // When using ES modules.
+// const router = new Navigo('/');
+
 let bodyElement = document.body;
 let contentSpaDiv = document.querySelector('.content-spa');
 
@@ -16,46 +21,28 @@ const logoStartScreen = elements.createHeading({
 const loginBtn = elements.createBtn({
     textContent: "Log in",
     classList: 'primair',
-    onClick(){
+    onClick() {
         // window.location.href = "#";
         divCenter.remove();
         showLoginPage();
+
+        // router.navigate('/inloggen');
     }
 });
 
 const registerBtn = elements.createBtn({
     textContent: "Registreer",
     classList: 'secundary',
-    onClick(){
+    onClick() {
         // window.location.href = "#";
         divCenter.remove();
         showRegisterPage();
+        // router.navigate('/registreer');
     }
 });
 
 contentSpaDiv.appendChild(divCenter);
 divCenter.append(logoStartScreen, loginBtn, registerBtn);
 
-
 export default contentSpaDiv;
 
-
-
-
-
-
-
-
-// let container = document.querySelector('.container');
-
-// let button = elements.createBtn({
-//     textContent: 'click on this link', 
-//     onClick(){
-//         window.location.href = "https://www.viki.com/tv/38232c-my-beautiful-man#episodes";
-//     }, 
-//     classList: 'primair'
-// });
-// const header2 = elements.createHeading(2, 'hi');
-// bodyElement.append(button, header2);
-
-// button.textContent = 'hello';
