@@ -18,12 +18,15 @@
 // _____________________________________________________
 .invitation{
     @extend %event-card;
+
+
+
     .event-on-calendar-page{
         border-bottom-left-radius: 0;
         border-bottom-right-radius: 0;
 
         .img-event{
-            background-image: url("https://static1.qmusic.medialaancdn.be/1/3b/56/33/1497252/adele-.jpeg")
+            background-image: url("https://static1.qmusic.medialaancdn.be/1/3b/56/33/1497252/adele-.jpeg");
         }
     }
 
@@ -34,6 +37,7 @@
         border-bottom-right-radius: 20px;
         max-width: 600px;
         margin: 0 auto;
+        margin-bottom: 2em;
 
         p{
             width: 100%;

@@ -2,7 +2,7 @@ import elements from '../element-factory';
 import showLoginPage from './login-view';
 import showRegisterPage from './register-view';
 
-function startscreen() {
+function showStartScreen() {
     let bodyElement = document.body;
     let contentSpaDiv = document.querySelector('.content-spa');
 
@@ -18,9 +18,9 @@ function startscreen() {
         textContent: "Log in",
         classList: 'primair',
         onClick() {
-            // window.location.href = "#";
-            divCenter.remove();
-            showLoginPage();
+            window.location.href = `${window.location.protocol}//${window.location.host}/inloggen`;
+            // divCenter.remove();
+            // showLoginPage();
 
             // router.navigate('/inloggen');
         }
@@ -31,8 +31,9 @@ function startscreen() {
         classList: 'secundary',
         onClick() {
             // window.location.href = "#";
-            divCenter.remove();
-            showRegisterPage();
+            // divCenter.remove();
+            // showRegisterPage();
+            window.location.href = `${window.location.protocol}//${window.location.host}/registreer`;
             // router.navigate('/registreer');
         }
     });
@@ -40,6 +41,4 @@ function startscreen() {
     contentSpaDiv.appendChild(divCenter);
     divCenter.append(logoStartScreen, loginBtn, registerBtn);
 }
-
-export default contentSpaDiv;
-export default startscreen;
+export default showStartScreen;

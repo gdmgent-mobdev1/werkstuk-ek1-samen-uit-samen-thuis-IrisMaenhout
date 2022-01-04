@@ -2,7 +2,8 @@ import elements from './element-factory.js';
 import showLoginPage from './views/login-view.js';
 import showRegisterPage from './views/register-view';
 
-// import Router from './router';
+import Router from './router';
+
 
 // import Navigo from 'navigo'; // When using ES modules.
 // const router = new Navigo('/');
@@ -23,8 +24,8 @@ const loginBtn = elements.createBtn({
     classList: 'primair',
     onClick() {
         // window.location.href = "#";
-        divCenter.remove();
-        showLoginPage();
+        // divCenter.remove();
+        // showLoginPage();
 
         // router.navigate('/inloggen');
     }
@@ -44,5 +45,11 @@ const registerBtn = elements.createBtn({
 contentSpaDiv.appendChild(divCenter);
 divCenter.append(logoStartScreen, loginBtn, registerBtn);
 
+
+// Router.getRouter().on('/test', ()=>{
+//     console.log('this is a second test, does this work?');
+// }).resolve();
+
+Router();
 export default contentSpaDiv;
 

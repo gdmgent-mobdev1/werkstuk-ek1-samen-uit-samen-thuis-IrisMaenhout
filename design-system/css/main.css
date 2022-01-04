@@ -10,6 +10,10 @@
   color: #815ed0;
 }
 
+.active-link-nav p, .active-link-nav i {
+  color: #815ed0;
+}
+
 .hide {
   display: none;
 }
@@ -40,6 +44,10 @@ a:hover {
 div {
   color: #FFF;
   font-family: "Lato", sans-serif;
+}
+
+.content-spa .nav-container {
+  padding: 1em 15%;
 }
 
 .nav-container {
@@ -92,7 +100,7 @@ nav ul li a {
 nav ul li a .icon {
   text-align: center;
   margin-bottom: 0.5em;
-  font-size: 20px;
+  font-size: 24px;
 }
 @media (min-width: 760px) {
   nav ul li a .icon {
@@ -137,6 +145,8 @@ nav ul li:hover div, nav ul li:hover p {
 .header-event .content .fa-chevron-left {
   font-size: 24px;
   cursor: pointer;
+  position: absolute;
+  left: 1.5em;
 }
 .header-event .content .fa-chevron-left:hover {
   color: #5555c5;
@@ -170,6 +180,7 @@ nav ul li:hover div, nav ul li:hover p {
   font-size: 24px;
 }
 .header-event .content .transparent-btn-going {
+  margin-top: 2em;
   background-color: #05050552;
   border: none;
   color: #FFF;
@@ -193,9 +204,10 @@ nav ul li:hover div, nav ul li:hover p {
   background-position: center;
   width: 100%;
   overflow: hidden;
-  position: relative;
+  position: fixed;
   margin-top: 0em;
   margin: 0 auto;
+  background-color: #1d2032;
 }
 .header-while-scrolling .img-event {
   background-image: url("https://cdn.filmtotaal.nl/images/covers/ay4r53s2ip.jpg");
@@ -269,12 +281,12 @@ nav ul li:hover div, nav ul li:hover p {
   max-width: 260px;
 }
 
-.primair, .close {
+.primair, .close, .nav-container .div-circle-on-nav-container .add-event-btn {
   color: #FFF;
   background-color: #5555c5;
   border: none;
 }
-.primair:hover, .close:hover {
+.primair:hover, .close:hover, .nav-container .div-circle-on-nav-container .add-event-btn:hover {
   background-color: rgba(164, 131, 255, 0.986);
   transition: 0.5s;
   cursor: pointer;
@@ -367,6 +379,8 @@ nav ul li:hover div, nav ul li:hover p {
 }
 
 .primair {
+  display: block;
+  margin: 0 auto;
   background-color: #5555c5;
   border: none;
 }
@@ -450,7 +464,7 @@ nav ul li:hover div, nav ul li:hover p {
 }
 
 .delete-btn {
-  background-color: #1d2032;
+  background-color: #191f3e;
   border: 1px solid #ff4a4a;
   border-radius: 10px;
   padding: 1em;
@@ -461,7 +475,7 @@ nav ul li:hover div, nav ul li:hover p {
   transition: 1s;
 }
 .delete-btn:hover span {
-  color: #1d2032;
+  color: #191f3e;
 }
 .delete-btn span {
   display: inline-block;
@@ -515,6 +529,76 @@ nav ul li:hover div, nav ul li:hover p {
   cursor: pointer;
 }
 
+.filters-events {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 600px;
+  margin: 3em auto;
+}
+.filters-events .filter {
+  display: block;
+  background-color: #1d2032;
+  padding: 0.5em;
+  border-radius: 5px;
+}
+.filters-events .all {
+  border: 2px solid #5246F0;
+  color: #5246F0;
+}
+.filters-events .all:hover, .filters-events .all-active-filter {
+  background-color: #5246F0;
+  color: #FFF;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.filters-events .accepted {
+  border: 2px solid #7562F8;
+  color: #7562F8;
+}
+.filters-events .accepted:hover, .filters-events .accepted-active-filter {
+  background-color: #7562F8;
+  color: #FFF;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.filters-events .invitation {
+  border: 2px solid #AB4BFE;
+  color: #AB4BFE;
+}
+.filters-events .invitation:hover, .filters-events .invitation-active-filter {
+  background-color: #AB4BFE;
+  color: #FFF;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.nav-container .div-circle-on-nav-container {
+  position: absolute;
+  bottom: 3.5em;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 100%;
+  width: fit-content;
+  background-color: #1d2032;
+}
+@media (min-width: 760px) {
+  .nav-container .div-circle-on-nav-container {
+    display: none;
+  }
+}
+.nav-container .div-circle-on-nav-container .add-event-btn {
+  border-radius: 100%;
+  margin: 0.5em;
+}
+.nav-container .div-circle-on-nav-container .add-event-btn i {
+  color: #1d2032;
+  font-size: 28px;
+  padding: 0.5em;
+}
+
 .event .event-on-calendar-page:last-of-type {
   margin-bottom: 2em;
 }
@@ -533,6 +617,7 @@ nav ul li:hover div, nav ul li:hover p {
   border-bottom-right-radius: 20px;
   max-width: 600px;
   margin: 0 auto;
+  margin-bottom: 2em;
 }
 .invitation .btns p {
   width: 100%;
@@ -622,8 +707,13 @@ nav ul li:hover div, nav ul li:hover p {
 .days div .event-in-calendar .dot-event {
   width: 10px;
   height: 10px;
-  background-color: yellow;
   border-radius: 100%;
+}
+.days div .event-in-calendar .invitation {
+  background-color: #AB4BFE;
+}
+.days div .event-in-calendar .accepted {
+  background-color: #5246F0;
 }
 
 .today {
@@ -682,6 +772,10 @@ nav ul li:hover div, nav ul li:hover p {
   position: absolute;
   right: 1.5em;
 }
+.create-edit-event .fa-times:hover {
+  color: rgba(164, 131, 255, 0.986);
+  cursor: pointer;
+}
 .create-edit-event form input,
 .create-edit-event form label {
   display: block;
@@ -701,6 +795,8 @@ nav ul li:hover div, nav ul li:hover p {
 }
 .create-edit-event form #description {
   margin-bottom: 2em;
+  height: 8em;
+  padding: 0.5em 1em;
 }
 .create-edit-event form input + input {
   margin: 1em 0;
@@ -726,14 +822,22 @@ nav ul li:hover div, nav ul li:hover p {
   padding: 0.3em;
   width: 100%;
   text-align: center;
+  background-color: #191f3e;
 }
-.create-edit-event form .btns {
+.create-edit-event form div:first-of-type div .secundary:hover {
+  background-color: #FFF;
+  transition: 0.5s;
+}
+.create-edit-event .btns {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2em;
 }
-.create-edit-event form .btns button {
+.create-edit-event .btns button {
   width: 100%;
+}
+.create-edit-event .btns .delete-btn {
+  background-color: #191f3e;
 }
 
 .call {
@@ -786,6 +890,7 @@ nav ul li:hover div, nav ul li:hover p {
 }
 .invite-friends__fixed-header div:first-of-type i {
   font-size: 24px;
+  cursor: pointer;
 }
 .invite-friends__fixed-header .search input {
   background-color: #2a3153;
@@ -793,6 +898,8 @@ nav ul li:hover div, nav ul li:hover p {
   margin-top: 0.2em;
   margin-left: 1em;
   color: #FFF;
+  outline: none;
+  width: 85%;
 }
 .invite-friends .friends {
   margin-top: 2em;
@@ -803,13 +910,20 @@ nav ul li:hover div, nav ul li:hover p {
   justify-content: space-between;
   align-items: center;
 }
-.invite-friends .friends .person div {
+.invite-friends .friends .person .flex-div {
   display: flex;
   gap: 2em;
   align-items: center;
 }
+.invite-friends .friends .person .fas {
+  font-size: 24px;
+  cursor: pointer;
+}
+.invite-friends .friends .person .small-text:hover {
+  color: #FFF;
+}
 .invite-friends .friends div + div {
-  margin-top: 1em;
+  margin-top: 2em;
 }
 
 .meldet-form .primair {
@@ -1142,6 +1256,18 @@ hr {
   background-color: #d23434;
 }
 
+.all-filter {
+  background-color: #5246F0;
+}
+
+.accepted-filter {
+  background-color: #7562F8;
+}
+
+.invitations {
+  background-color: #AB4BFE;
+}
+
 .subtitel-design-system {
   margin-top: 2em;
 }
@@ -1205,14 +1331,38 @@ hr {
   margin-top: 3em;
   margin-bottom: 0.5em;
 }
-.register-login-page .primair {
-  display: block;
-  margin: 0 auto;
-}
 
 .add-extra-user-info-page h1 {
   text-align: center;
   margin-bottom: 1em;
+}
+
+.event-content h2 {
+  padding-top: 3em;
+}
+.event-content h3 {
+  margin-top: 2em;
+}
+.event-content .map-div-location {
+  background-color: fuchsia;
+  width: 100%;
+  height: 160px;
+  margin-bottom: 1em;
+}
+.event-content .location-text {
+  text-align: center;
+}
+.event-content .div-person {
+  display: flex;
+  gap: 2em;
+  align-items: center;
+}
+.event-content .div-person .avatar-creator {
+  width: 64px;
+  height: 64px;
+  border-radius: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 /*# sourceMappingURL=main.css.map */

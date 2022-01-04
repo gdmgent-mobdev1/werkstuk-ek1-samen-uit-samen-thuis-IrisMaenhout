@@ -77,6 +77,7 @@ async function extraInfo() {
                         };
                         updateInfoFirestore();
                         console.log('succes');
+                        window.location.href = `${window.location.protocol}//${window.location.host}/home`;
                     });
                 }
 

@@ -46,6 +46,7 @@ const login = async () => {
             await signInWithEmailAndPassword(auth, email, password);
             // location.replace('./home.html');
             console .log('succes');
+            window.location.href = `${window.location.protocol}//${window.location.host}/home`;
             console.log(auth.currentUser);
         } catch (e) {
             console.log(e);

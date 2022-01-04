@@ -1,9 +1,11 @@
 import elements from '../element-factory';
-import contentSpaDiv from '../main';
+// import contentSpaDiv from '../main';
 import login from '../login';
 import signInGoogle from '../login-google';
 
 function showLoginPage() {
+    const spaDiv = document.querySelector('.content-spa');
+
     const registerOrLoginPage = elements.createDiv({
         classList: "register-login-page container"
     });
@@ -79,7 +81,7 @@ function showLoginPage() {
         href: "#"
     })
 
-    contentSpaDiv.appendChild(registerOrLoginPage);
+    spaDiv.appendChild(registerOrLoginPage);
     registerOrLoginPage.append(titleLogIn, formLoginRegister, primairBtnLoginPage, lineLoginPage, WordOnLine, secundaryBtnLoginPage, pRegister, linkToRegisterPage);
     formLoginRegister.append(emailLabel, emailInput, passwordLabel, passwordInput);
     secundaryBtnLoginPage.append(googleIcon);

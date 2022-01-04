@@ -38,6 +38,8 @@
         .fa-chevron-left {
             font-size: 24px;
             cursor: pointer;
+            position: absolute;
+            left: 1.5em;
 
             &:hover {
                 color: map.get($map: vars.$colors, $key: primair-color);
@@ -85,6 +87,7 @@
         }
 
         .transparent-btn-going {
+            margin-top: 2em;
             background-color: #05050552;
             border: none;
             color: map.get($map: vars.$colors, $key: white);
@@ -114,9 +117,10 @@
     width: 100%;
     // max-width: 600px;
     overflow: hidden;
-    position: relative;
+    position: fixed;
     margin-top: 0em;
     margin: 0 auto;
+    background-color: map.get($map: vars.$colors, $key: background-color);
 
     .img-event {
         background-image: url("https://cdn.filmtotaal.nl/images/covers/ay4r53s2ip.jpg");

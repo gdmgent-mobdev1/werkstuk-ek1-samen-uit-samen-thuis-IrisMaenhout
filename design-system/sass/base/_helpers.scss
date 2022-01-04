@@ -11,6 +11,13 @@
     }
 }
 
+.active-link-nav{
+    p, i{
+        color: map.get($map: vars.$colors, $key: selected);
+    }
+    
+}
+
 .hide{
     display: none;
 }

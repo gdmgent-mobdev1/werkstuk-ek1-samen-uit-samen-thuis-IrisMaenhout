@@ -72,8 +72,15 @@
             .dot-event{
                 width: 10px;
                 height: 10px;
-                background-color: yellow;
                 border-radius: 100%;
+            }
+
+            .invitation{
+                background-color: #AB4BFE;
+            }
+
+            .accepted{
+                background-color: #5246F0;
             }
         }
 

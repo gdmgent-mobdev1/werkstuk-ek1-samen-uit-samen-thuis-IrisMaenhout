@@ -72,9 +72,10 @@ async function register() {
                     phoneNumber: user.phoneNumber
                 });
                 console.log("Document written with ID: ", docRef.id);
-                const currentcontent = document.querySelector('.register-login-page');
-                currentcontent.remove();
-                showAddInfoPage();
+                // const currentcontent = document.querySelector('.register-login-page');
+                // currentcontent.remove();
+                // showAddInfoPage();
+                window.location.href = `${window.location.protocol}//${window.location.host}/registreer/extra-info`;
             } catch (e) {
                 console.error("Error adding document: ", e);
             }

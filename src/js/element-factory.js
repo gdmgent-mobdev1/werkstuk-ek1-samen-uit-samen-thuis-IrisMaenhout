@@ -117,7 +117,20 @@ const elements = {
         textarea.name = name;
         textarea.id = id;
         textarea.placeholder = placeholder;
-        return placeholder;
+        return textarea;
+    },
+
+    createSpan({classList = '', textContent =''}){
+        const span = document.createElement('span');
+        span.classList =classList;
+        span.textContent = textContent;
+        return span;
+    },
+
+    createOverlay(){
+        const overlay = document.createElement('div');
+        overlay.classList = "overlay";
+        return overlay;
     }
 }
 

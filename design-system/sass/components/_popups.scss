@@ -71,6 +71,11 @@
         font-size: 26px;
         position: absolute;
         right: 1.5em;
+
+        &:hover{
+            color: rgba(164, 131, 255, 0.986);
+            cursor: pointer;
+        }
     }
 
     form {
@@ -98,6 +103,8 @@
         #description {
             @extend %inputfield-popup;
             margin-bottom: 2em;
+            height: 8em;
+            padding: 0.5em 1em;
         }
 
         input+input {
@@ -128,21 +135,35 @@
                     padding: 0.3em;
                     width: 100%;
                     text-align: center;
+                    background-color: map.get($map: vars.$colors, $key: popup-background-color);
+
+                    &:hover{
+                        background-color: map.get($map: vars.$colors, $key: white);
+                        transition: 0.5s;
+                    }
                 }
             }
         }
+    }
 
-        .btns {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2em;
+    .btns {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2em;
 
-            button {
-                width: 100%;
-            }
+        button {
+            width: 100%;
         }
+
+        .delete-btn {
+            background-color: map.get($map: vars.$colors, $key: popup-background-color);
+        }
+
+
     }
 }
+
+
 
 // __________________________________________________________
 
@@ -220,6 +241,7 @@
 
             i {
                 font-size: 24px;
+                cursor: pointer;
             }
         }
 
@@ -232,6 +254,8 @@
                 margin-top: 0.2em;
                 margin-left: 1em;
                 color: map.get($map: vars.$colors, $key: white);
+                outline: none;
+                width: 85%;
             }
         }
     }
@@ -245,7 +269,7 @@
             justify-content: space-between;
             align-items: center;
 
-            div {
+            .flex-div {
                 display: flex;
                 gap: 2em;
                 align-items: center;
@@ -255,10 +279,23 @@
                 @extend %profile-img-list;
 
             }
+
+            .fas{
+                font-size: 24px;
+                cursor: pointer;
+            }
+
+            .small-text{
+                &:hover{
+                    color: map.get($map: vars.$colors, $key: white);;
+                }
+            }
+
+
         }
 
         div+div {
-            margin-top: 1em;
+            margin-top: 2em;
         }
     }
 }
@@ -452,7 +489,7 @@
     width: 100%;
     bottom: 6em;
     z-index: 4;
-    
+
 
     @include media.for-tablet-portrait-up {
         bottom: 0;
@@ -488,7 +525,7 @@
         img {
             width: 15%;
         }
-    
+
         .text {
             width: 100%;
             margin-left: 2em;
@@ -496,5 +533,5 @@
         }
     }
 
-    
+
 }

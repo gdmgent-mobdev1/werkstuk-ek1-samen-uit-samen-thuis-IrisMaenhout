@@ -5,7 +5,8 @@ import register from '../register';
 
 
 function showRegisterPage() {
-    
+    const spaDiv = document.querySelector('.content-spa');
+
     const registerOrLoginPage = elements.createDiv({
         classList: "register-login-page container"
     });
@@ -100,7 +101,8 @@ function showRegisterPage() {
         href: "#"
     })
 
-    contentSpaDiv.appendChild(registerOrLoginPage);
+    // contentSpaDiv.appendChild(registerOrLoginPage);
+    spaDiv.appendChild(registerOrLoginPage);
     registerOrLoginPage.append(titleLogIn, formLoginRegister, primairBtnLoginPage, pLogin, linkToLoginPage);
     formLoginRegister.append(firstNameLabel, firstNameInput, lastNameLabel, lastNameInput,emailLabel, emailInput, passwordLabel, passwordInput);
 }
