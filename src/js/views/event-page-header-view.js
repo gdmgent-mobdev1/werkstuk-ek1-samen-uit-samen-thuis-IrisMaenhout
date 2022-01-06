@@ -2,6 +2,8 @@ import elements from '../element-factory';
 import showHeaderWhenScrolling from './event-page-header-scrolled-view';
 import showPopUpEditEvent from './create-edit-event-view';
 import renderInviteFriendsPopup from './popup-invite-friends';
+import inviteFriends from '../events-logic/add-remove-friends/add-friends'
+import removeFriends from "../events-logic/add-remove-friends/remove-friends";
 
 function showEventPage({
     imageLink = '#',
@@ -51,11 +53,16 @@ function showEventPage({
     const btnAddUser = elements.createBtn({
         classList: "btn-header-event add-user",
         onClick(){
-            renderInviteFriendsPopup();
+            renderInviteFriendsPopup("Mensen uitnodigen");
+            inviteFriends();
         }
     });
     const btnRemoveUser = elements.createBtn({
-        classList: "btn-header-event remove-user"
+        classList: "btn-header-event remove-user",
+        onClick(){
+            renderInviteFriendsPopup("Mensen verwijderen");
+            removeFriends();
+        }
     });
 
     const iChange = elements.createI({

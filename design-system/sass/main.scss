@@ -20,6 +20,8 @@
 @use './components/popups';
 @use './components/form';
 @use './components/add-avatar';
+@use './components/header-account';
+@use './components/map';
 
 
 //PAGE SPECIFIC
@@ -28,4 +30,6 @@
 @use './pages/loginPage-spa';
 @use './pages/addExtraInfo';
 @use './pages/event-page';
+@use './pages/settings-account';
+@use './pages/map-page';
 

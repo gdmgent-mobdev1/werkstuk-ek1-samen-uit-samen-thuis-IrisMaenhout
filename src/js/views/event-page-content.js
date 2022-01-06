@@ -1,4 +1,5 @@
 import elements from '../element-factory';
+import locationEvent from '../location/location-event';
 
 function showContentEventPage({street = '', city = '', info = '', createdOn ='', editedOn = '', urlAvatarCreator ='', nameCreator=''}) {
 
@@ -24,6 +25,8 @@ function showContentEventPage({street = '', city = '', info = '', createdOn ='',
     const mapDiv = elements.createDiv({
         classList: "map-div-location"
     });
+
+    mapDiv.id = "map";
     
     const streetP = elements.createParagraph({
         textContent: street,
@@ -82,6 +85,8 @@ function showContentEventPage({street = '', city = '', info = '', createdOn ='',
         });
         eventContent.append(titleEditedOn, dateEdited);
     }
+
+    locationEvent();
 
 
 

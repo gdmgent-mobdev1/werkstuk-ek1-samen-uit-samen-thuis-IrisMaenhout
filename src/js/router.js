@@ -1,6 +1,6 @@
 // import contentSpaDiv from './main';
 import 'regenerator-runtime/runtime';
-// import elements from '../element-factory';
+import elements from './element-factory';
 // import showPopUpEditEvent from '../views/create-edit-event-view';
 
 import {
@@ -33,6 +33,13 @@ import showContentEventPage from './views/event-page-content';
 import showEventsOnSpecificDay from './events-logic/show-events-home';
 import updateEventInFirebase from './events-logic/update-event';
 import saveEventInFirebase from './events-logic/create-event';
+import renderContentAcountSettings from './views/account-views/acount-settings-view';
+import renderHeaderAccount from './views/account-views/header-account';
+import changePersonalData from './views/account-views/personal-data';
+import getUserLocation from './location/user-location';
+import btnsMap from './views/map-view/btns-map';
+import activateHelpMeWithspeechRecognition from './location/speech-recognition';
+import getDirections from './location/directions';
 // import smallPopupView from './views/small-popup-view';
 
 import Navigo from 'navigo'; // When using ES modules.
@@ -62,61 +69,110 @@ function Router() {
     const spaDiv = document.querySelector('.content-spa');
     const startScreen = document.querySelector('.content-spa .primair');
 
+    
+    const spaContent = document.querySelector('.content-spa');
+    const body = document.querySelector('body');
+    body.style.padding = 0;
+
+    const divBtnsMap = elements.createDiv({
+        classList: "btns-div-map"
+    });
+
+    // div to display maboxmap
+    const map = elements.createDiv({});
+
+
     router.on(locationUrl, function () {
         spaDiv.innerHTML = '';
         switch (locationUrl) {
             case '/start':
                 showStartScreen();
+              
                 break;
             case '/inloggen':
                 console.log(spaDiv);
                 console.log(startScreen);
                 showLoginPage();
-                console.log('is this path working');
+                body.style.paddingBottom = "6em";
                 break;
             case '/registreer':
                 showRegisterPage();
-
+                body.style.paddingBottom = "6em";
 
                 break;
 
             case '/registreer/extra-info':
                 showAddInfoPage();
-
+                body.style.paddingBottom = "6em";
 
                 break;
             case '/home':
                 renderNav();
                 showHomePage();
                 showEventsOnSpecificDay();
+                body.style.paddingBottom = "6em";
 
                 break;
-            case '/evenement':
-                // dit later wijzigen met behulp van data uit firebase en dit in een ander bestand plaatsen
+            case '/account':
 
-                showEventPage({
-                    imageLink: "https://img.static-rmg.be/a/view/q75/w/h/1379701/rome-citytrip.jpg",
-                    title: "Reis naar rome",
-                    location: "Rome",
-                    date: "20/10/2020",
-                    time: "20:00 - 23:00"
-                });
-
-                showContentEventPage({
-                    street: 'Koning Boudewijnstadion',
-                    city: '1000 Brussel',
-                    info: 'Lorem ipsum dolor sit',
-                    createdOn: '15/11/2021',
-                    urlAvatarCreator: 'https://www.masslive.com/resizer/kNl3qvErgJ3B0Cu-WSBWFYc1B8Q=/arc-anglerfish-arc2-prod-advancelocal/public/W5HI6Y4DINDTNP76R6CLA5IWRU.jpeg',
-                    nameCreator: 'Lisa'
-                });
+                renderNav();
+                renderHeaderAccount("Account");
+                renderContentAcountSettings();
+                // body.style.padding = "6em";
 
 
                 break;
 
-            case `/evenement/dfnsdk`:
+            case '/account/persoonlijke-gegevens':
+
+                renderNav();
+                renderHeaderAccount("Persoonlijke gegevens");
+                changePersonalData();
+                break;
+
+            case '/kaart':
+            
+                body.style.padding = 0;
+
+                map.id = "map-full-screen";
+                spaContent.append(map);
+
+                // show mapbox & directions
+                getUserLocation();
+
+                // show btns
+                spaContent.append(divBtnsMap);
+
+                btnsMap.showDirectionBtn();
+                btnsMap.showHelpBtn();
 
 
+                // activateHelpMeWithspeechRecognition();
+
+
+
+                break;
+
+            case '/kaart/routebeschrijving':
+
+                map.id = "map-full-screen";
+                const instructionsDiv = elements.createDiv({});
+                instructionsDiv.id = "instructions";
+                spaContent.append(map, instructionsDiv);
+
+                // show mapbox & directions
+                // getDirections();
+                const vehicleChoice = sessionStorage.getItem('vehicle');
+                getDirections({
+                    vehicle: vehicleChoice
+                });
+
+                // show btns
+                
+                spaContent.append(divBtnsMap);
+
+                btnsMap.closeDirectionsBtn();
+                btnsMap.showHelpBtn();
 
                 break;
 
@@ -125,7 +181,7 @@ function Router() {
                 async function getEvent() {
                     const docRef = doc(db, "events", locationUrl.slice(10));
                     const docSnap = await getDoc(docRef);
-            
+
                     if (docSnap.exists()) {
                         console.log("Document data:", docSnap.data());
                         showEventPage({
@@ -134,7 +190,7 @@ function Router() {
                             date: docSnap.data().date,
                             time: docSnap.data().time
                         });
-            
+
                         showContentEventPage({
                             street: docSnap.data().street + " " + docSnap.data().number,
                             city: docSnap.data().zip + " " + docSnap.data().city,
@@ -146,20 +202,20 @@ function Router() {
                         });
                         renderNav();
                         updateEventInFirebase();
-                        
+
                         // smallPopupView();
                         // deleteEvent();
-            
+
                     } else {
-            
+
                         console.log("No such document!");
                         console.log(`404: Sorry, we didn't found the page`);
                     }
                 }
-            
+
                 getEvent();
-            
-                
+
+
         }
 
 

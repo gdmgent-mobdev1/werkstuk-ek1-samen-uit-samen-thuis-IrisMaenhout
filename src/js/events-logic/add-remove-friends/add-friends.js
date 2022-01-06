@@ -1,3 +1,6 @@
+import 'regenerator-runtime/runtime';
+import elements from '../../element-factory';
+
 import {
     initializeApp
 } from "firebase/app";
@@ -18,6 +21,7 @@ import {
     addDoc,
     doc,
     query,
+    onSnapshot,
     where,
     serverTimestamp
 } from "firebase/firestore";
@@ -47,6 +51,8 @@ function inviteFriends() {
             const eventId = locationUrl.slice(11);
             console.log(eventId);
 
+            const eventRef = doc(db, "events", eventId);
+
 
             const getAllUsers = async () => {
                 const searchValue = document.querySelector('#search').value;
@@ -54,74 +60,68 @@ function inviteFriends() {
                 clearResults();
                 if (searchValue.length > 0) {
                     // usersListDiv.classList.add('hide');
-                    getAllUsersQuery.forEach((doc) => {
+                    getAllUsersQuery.forEach(async (doc) => {
                         // console.log(doc.data());
                         let userName = doc.data().userName;
                         userName = userName.toLowerCase();
 
                         // console.log(userName);
+                        const docSnap = await getDoc(eventRef);
+                        if (docSnap.exists()) {
+                            if (!(docSnap.data().invitedUsers.includes(doc.data().userId)) || !(docSnap.data().joinedUsers.includes(doc.data().userId))) {
+                                if (!(docSnap.data().creatorId.includes(doc.data().userId))) {
+
+                                    if ((doc.data().lastName.toLowerCase()).includes(searchValue.toLowerCase()) || doc.data().firstName.toLowerCase().includes(searchValue.toLowerCase()) || doc.data().userName.toLowerCase().includes(searchValue.toLowerCase())) {
 
 
+                                        const divPerson = elements.createDiv({
+                                            classList: "person"
+                                        });
 
-                        if ((doc.data().lastName.toLowerCase()).includes(searchValue.toLowerCase()) || doc.data().firstName.toLowerCase().includes(searchValue.toLowerCase()) || doc.data().userName.toLowerCase().includes(searchValue.toLowerCase())) {
+                                        const divFlexContainer = elements.createDiv({
+                                            classList: "flex-div",
+                                        });
 
-                            // const docRef = doc(db, "events", eventId);
-                            // const docSnap = await getDoc(docRef);
+                                        const iAddUser = elements.createI({
+                                            classList: "fas fa-user-plus"
+                                        });
 
-                            // if (docSnap.exists()) {
-                            //     console.log("Document data:", docSnap.data());
-
-                            //     if(docSnap.data().invitedUsers.includes())
-                            // } else {
-                            //     // doc.data() will be undefined in this case
-                            //     console.log("No such document!");
-                            // }
-
-                            // if (doc.data().)
-                            usersListDiv.innerHTML +=
-                                `
-                                <div class="person">
-                                    <div class="flex-div">
-                                        <img src=${doc.data().avatar}
+                                        usersListDiv.append(divPerson);
+                                        divPerson.append(divFlexContainer, iAddUser);
+                                        divFlexContainer.innerHTML = `
+                                            <img src=${doc.data().avatar}
                                             alt="${doc.data().userName}">
-                                        <div>
-                                            <p>${doc.data().userName}</p>
-                                            <i class="small-text">${doc.data().firstName} ${doc.data().lastName}</i>
-                                            <p class="user-id hide">${doc.data().userId}</p>
-                                        </div>
-                                    </div>
-                                    <i class="fas fa-user-plus"></i>
-                                </div>
-                            `
+                                            <div>
+                                                <p>${doc.data().userName}</p>
+                                                <i class="small-text">${doc.data().firstName} ${doc.data().lastName}</i>
+                                            </div>
+                                        `;
+
+                                        iAddUser.addEventListener('click', async () => {
+                                            console.log(divPerson);
+
+                                            await updateDoc(eventRef, {
+                                                invitedUsers: arrayUnion(doc.data().userId)
+                                            });
+
+                                            iAddUser.style.color = '#85c45e';
+                                        })
+
+
+                                    }
+                                }
+
+                            }
                         }
+
+
+
+
                     })
                 } else {
 
                 }
 
-                const addUserbtns = document.querySelectorAll('.fa-user-plus');
-
-                addUserbtns.forEach((add) => {
-                    add.addEventListener('click', async (e) => {
-                        const target = e.target;
-                        const personDivParent = target.parentElement;
-                        // console.log(personDivParent);
-
-                        const eventRef = doc(db, "events", eventId);
-                        const userId = personDivParent.querySelector('.user-id').textContent;
-                        console.log(userId);
-
-
-                        await updateDoc(eventRef, {
-                            invitedUsers: arrayUnion(userId)
-                        });
-                        add.style.color = '#85c45e';
-
-
-
-
-                    })
-                })
             }
 
             searchElement.addEventListener("keyup", getAllUsers);

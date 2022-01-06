@@ -6,7 +6,7 @@
     padding: 1em 15%;
 }
 .nav-container{
-    z-index: 1;
+    z-index: 3;
     padding: 1em 5%;
     background-color: map.get($map: vars.$colors, $key: nav-background-color);
     position: fixed;

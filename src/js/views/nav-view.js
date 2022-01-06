@@ -48,6 +48,26 @@ function renderNav(){
 
     });
 
+    aNavItemHome.addEventListener('click', ()=>{
+        if(!(aNavItemHome.contains("active-link-nav"))){
+            aNavItemHome.classList.add('active-link-nav');
+        }
+
+        if(aNavItemProfile.contains("active-link-nav")){
+            aNavItemProfile.classList.remove('active-link-nav');
+        }
+    });
+
+    aNavItemProfile.addEventListener('click', ()=>{
+        if(!(aNavItemProfile.contains("active-link-nav"))){
+            aNavItemProfile.classList.add('active-link-nav');
+        }
+
+        if(aNavItemProfile.contains("active-link-nav")){
+            aNavItemHome.classList.remove('active-link-nav');
+        }
+    });
+
     const divNavItemProfile = elements.createDiv({
         classList: "icon"
     });

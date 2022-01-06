@@ -1,7 +1,6 @@
 import elements from "../element-factory";
-import inviteFriends from '../events-logic/add-remove-friends/add-friends'
 
-function renderInviteFriendsPopup(){
+function renderInviteFriendsPopup(text){
 
     const overlay = elements.createOverlay();
 
@@ -16,7 +15,7 @@ function renderInviteFriendsPopup(){
 
     const titlePopup = elements.createHeading({
         size: 2,
-        textContent: "Vrienden uitnodigen"
+        textContent: text
     });
 
     const iClose = elements.createI({
@@ -54,7 +53,8 @@ function renderInviteFriendsPopup(){
     div.append(titlePopup, iClose);
     divSearch.append(iSearch, inputSearch);
 
-    inviteFriends();
+    // inviteFriends();
+    // removeFriends();
 }
 export default renderInviteFriendsPopup;
 /* <div class="invite-friends hide">

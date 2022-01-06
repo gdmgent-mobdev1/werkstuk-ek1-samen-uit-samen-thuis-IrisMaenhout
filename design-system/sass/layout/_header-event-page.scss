@@ -121,6 +121,7 @@
     margin-top: 0em;
     margin: 0 auto;
     background-color: map.get($map: vars.$colors, $key: background-color);
+    z-index: 3;
 
     .img-event {
         background-image: url("https://cdn.filmtotaal.nl/images/covers/ay4r53s2ip.jpg");

@@ -122,6 +122,37 @@ function showEventsOnSpecificDay() {
             getMonthAndYear();
 
 
+            // ______save id of the event of today______
+            let today = new Date();
+            var date;
+            if ((today.getMonth() + 1) < 10) {
+                if (today.getDate() < 10) {
+                    date = `${today.getFullYear()}-0${today.getMonth()+1}-0${today.getDate()}`;
+
+                } else {
+                    date = `${today.getFullYear()}-0${today.getMonth()+1}-${today.getDate()}`;
+                 
+                }
+            }else{
+                
+                if (today.getDate() < 10) {
+                    date = `${today.getFullYear()}-${today.getMonth()+1}-0${today.getDate()}`;
+                }else{
+                    date = `${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()}`;
+                    
+                }
+            }
+            
+            const eventTodayQuery = query(eventRef, where("date", "==", date));
+
+
+            const snapShot = onSnapshot(eventTodayQuery, (querySnapshot) => {
+                querySnapshot.forEach((doc) => {
+                    sessionStorage.setItem('eventOfTheDay', doc.id);
+                })
+            });
+
+
             const arrows = document.querySelectorAll('.month i');
             arrows.forEach((arrow) => {
                 arrow.addEventListener('click', () => {
@@ -157,7 +188,7 @@ function showEventsOnSpecificDay() {
                         calendarContainer.after(divEvents);
 
                         const dateQuery = query(eventRef, where("date", "==", selectedDate));
-                        
+
 
                         const snapShot = onSnapshot(dateQuery, (querySnapshot) => {
                             querySnapshot.forEach((doc) => {
@@ -250,7 +281,7 @@ function showEventsOnSpecificDay() {
                     sessionStorage.setItem('active', 'all');
 
                     filterdDotsEvents();
-                    
+
                 }
             });
 
@@ -289,26 +320,26 @@ function showEventsOnSpecificDay() {
             });
 
             function filterdDotsEvents() {
-                days.forEach((day)=>{
+                days.forEach((day) => {
                     const eventDot = day.querySelector('.event-in-calendar');
-                    eventDot.innerHTML ='';
+                    eventDot.innerHTML = '';
                 })
-                divEvents.innerHTML ='';
-                
+                divEvents.innerHTML = '';
+
                 const activeFilter = sessionStorage.getItem('active');
 
                 if (activeFilter == 'all') {
                     checkJoinedUsers();
                     checkInvitedUsers();
-                }else if (activeFilter == 'accepted') {
+                } else if (activeFilter == 'accepted') {
                     checkJoinedUsers();
-                }else{
+                } else {
                     checkInvitedUsers();
                 }
             }
 
             filterdDotsEvents();
-            
+
 
             function checkJoinedUsers() {
                 const joinedUsersQuery = query(eventRef, where("joinedUsers", "array-contains", user.uid));
@@ -324,7 +355,7 @@ function showEventsOnSpecificDay() {
                         days.forEach((day) => {
                             const calendarDayArray = day.innerHTML.match(isNumber);
                             const calendarDay = parseInt(calendarDayArray[0]);
-                
+
                             if (calendarDay === dayEvent && selectedMonthAndYear[1] === dateEvent[1] && dateEvent[0] == selectedMonthAndYear[0]) {
                                 // console.log(doc.data().title);
                                 const eventDot = day.querySelector('.event-in-calendar');
@@ -369,7 +400,7 @@ function showEventsOnSpecificDay() {
                 })
             }
 
-            
+
 
 
 

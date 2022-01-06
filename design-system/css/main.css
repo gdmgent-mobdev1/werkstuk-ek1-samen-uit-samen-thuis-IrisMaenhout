@@ -51,7 +51,7 @@ div {
 }
 
 .nav-container {
-  z-index: 1;
+  z-index: 3;
   padding: 1em 5%;
   background-color: #0e101b;
   position: fixed;
@@ -208,6 +208,7 @@ nav ul li:hover div, nav ul li:hover p {
   margin-top: 0em;
   margin: 0 auto;
   background-color: #1d2032;
+  z-index: 3;
 }
 .header-while-scrolling .img-event {
   background-image: url("https://cdn.filmtotaal.nl/images/covers/ay4r53s2ip.jpg");
@@ -1161,6 +1162,34 @@ nav ul li:hover div, nav ul li:hover p {
   display: none;
 }
 
+.header-account {
+  display: flex;
+  gap: 2em;
+  align-items: baseline;
+  padding: 1em;
+  background-color: #0e101b;
+}
+@media (min-width: 760px) {
+  .header-account {
+    border-top: 3px solid rgba(255, 255, 255, 0.253);
+    padding: 1em 4em;
+  }
+}
+.header-account i {
+  font-size: 24px;
+}
+.header-account i:hover {
+  color: #815ed0;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#map-full-screen {
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -1363,6 +1392,46 @@ hr {
   border-radius: 100%;
   object-fit: cover;
   object-position: center;
+}
+
+.content-acount-page {
+  margin-top: 2em;
+}
+.content-acount-page p {
+  margin-bottom: 2em;
+  cursor: pointer;
+}
+.content-acount-page .warning-text {
+  color: #ff4a4a;
+}
+
+.content-spa .btns-div-map {
+  position: fixed;
+  bottom: 20%;
+  right: 2em;
+  z-index: 2;
+}
+.content-spa .btns-div-map button {
+  display: block;
+}
+.content-spa .btns-div-map button + button {
+  margin-top: 2em;
+}
+.content-spa .warning-top {
+  z-index: 1;
+}
+.content-spa .mapbox-directions-inputs {
+  display: none;
+}
+.content-spa .directions-control-instructions {
+  background-color: rgba(74, 57, 119, 0.781);
+}
+.content-spa .mapbox-directions-route-summary {
+  position: fixed;
+  background-color: #374c8f;
+}
+.content-spa .mapbox-directions-steps {
+  margin-top: 2em;
 }
 
 /*# sourceMappingURL=main.css.map */

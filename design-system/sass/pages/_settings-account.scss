@@ -1,0 +1,15 @@
+@use '../abstracts/variables'as vars;
+@use "sass:map";
+
+.content-acount-page{
+    margin-top: 2em;
+
+    p{
+        margin-bottom: 2em;
+        cursor: pointer;
+    }
+
+    .warning-text{
+        color: map.get($map: vars.$colors, $key: warning-color);
+    }
+}
