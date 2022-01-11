@@ -23,7 +23,7 @@
             "sizes": "180x180"
         }
     ],
-    "start_url": "index.html",
+    "start_url": "https://samen-uit-samen-thuis.onrender.com",
     "display": "standalone",
     "theme_color": "#000000",
     "background-color": "000000"
