@@ -98,7 +98,7 @@ function showRegisterPage() {
 
     const linkToLoginPage = elements.createLink({
         textContent: "Log je hier in",
-        href: "#"
+        href: `${window.location.protocol}//${window.location.host}/inloggen`
     })
 
     // contentSpaDiv.appendChild(registerOrLoginPage);

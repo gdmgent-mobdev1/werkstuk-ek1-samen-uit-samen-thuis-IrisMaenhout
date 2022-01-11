@@ -106,7 +106,8 @@ function getDirections({
                                         accessToken: mapboxgl.accessToken,
                                         unit: 'metric',
                                         language: 'nl',
-                                        profile: vehicle
+                                        profile: vehicle,
+                                        draggable: false
                                     });
                                     map.addControl(directions, 'top-left');
                     

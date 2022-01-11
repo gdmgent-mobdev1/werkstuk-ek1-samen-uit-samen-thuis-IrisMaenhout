@@ -73,12 +73,14 @@ function signInGoogle() {
                     phoneNumber: user.phoneNumber
                 });
                 console.log("Document written with ID: ", docRef.id);
+                window.location.href = `${window.location.protocol}//${window.location.host}/home`;
                 // location.replace('./home.html');
             } catch (e) {
                 console.error("Error adding document: ", e);
             }
         } else {
             console.log('user zit al in de database, dus is niet meer toegevoegd.');
+            window.location.href = `${window.location.protocol}//${window.location.host}/home`;
             // location.replace('./home.html');
         }
 

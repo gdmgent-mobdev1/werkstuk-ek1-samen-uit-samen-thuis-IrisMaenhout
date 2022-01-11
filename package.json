@@ -12,6 +12,9 @@
     "type": "git",
     "url": "git+https://github.com/gdmgent-mobdev1/werkstuk-ek1-samen-uit-samen-thuis-IrisMaenhout.git"
   },
+  "staticFiles": {
+    "staticPath": "offline"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -27,6 +30,7 @@
     "firebase": "^9.6.1",
     "firebase-config": "^0.0.2",
     "lib": "^4.3.3",
+    "parcel-plugin-static-files-copy": "^2.6.0",
     "views": "^1.0.2"
   }
 }

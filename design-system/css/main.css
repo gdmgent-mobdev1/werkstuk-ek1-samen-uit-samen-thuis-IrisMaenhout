@@ -1420,6 +1420,24 @@ hr {
 .content-spa .warning-top {
   z-index: 1;
 }
+.content-spa .marker {
+  background-image: url("https://prachtigparijs.nl/images/eiffeltoren.jpg");
+  background-size: cover;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.content-spa .mapboxgl-popup {
+  max-width: 200px;
+}
+.content-spa .mapboxgl-popup-content {
+  text-align: center;
+  font-family: "Open Sans", sans-serif;
+}
+.content-spa .mapboxgl-popup-content h3, .content-spa .mapboxgl-popup-content p {
+  color: #3e06a5;
+}
 .content-spa .mapbox-directions-inputs {
   display: none;
 }
