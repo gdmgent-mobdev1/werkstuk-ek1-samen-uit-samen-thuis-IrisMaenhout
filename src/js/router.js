@@ -85,6 +85,7 @@ function Router() {
     router.on(locationUrl, function () {
         spaDiv.innerHTML = '';
         switch (locationUrl) {
+            case '/':
             case '/start':
                 showStartScreen();
               
@@ -175,7 +176,6 @@ function Router() {
                 btnsMap.showHelpBtn();
 
                 break;
-
 
             default:
                 async function getEvent() {
