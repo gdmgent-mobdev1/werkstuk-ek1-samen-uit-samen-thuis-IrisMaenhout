@@ -74,10 +74,11 @@ async function extraInfo() {
                                 phoneNumber: phoneNumber,
                                 userName: userName
                             });
+                            window.location.href = `${window.location.protocol}//${window.location.host}/home`;
                         };
                         updateInfoFirestore();
                         console.log('succes');
-                        window.location.href = `${window.location.protocol}//${window.location.host}/home`;
+                        
                     });
                 }
 

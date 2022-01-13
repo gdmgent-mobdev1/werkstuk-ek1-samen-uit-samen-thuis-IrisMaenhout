@@ -1,8 +1,36 @@
 import elements from "../../element-factory";
-function showPopupCallSeomeone(){
+
+import {
+    initializeApp
+} from 'firebase/app';
+
+import {
+    getAuth,
+    onAuthStateChanged
+} from "firebase/auth";
+
+import {
+    getFirestore,
+    collection,
+    addDoc,
+    doc,
+    getDoc,
+    query,
+    where,
+    onSnapshot,
+    updateDoc,
+    getDocs
+} from 'firebase/firestore';
+
+
+import {
+    getFirebaseConfig
+} from '../../firebase-config';
+
+function showPopupCallSeomeone() {
     const overlay = elements.createOverlay();
     const popup = elements.createDiv({
-      classList: "call"  
+        classList: "call"
     });
 
     const fixedHeader = elements.createDiv({
@@ -13,14 +41,14 @@ function showPopupCallSeomeone(){
 
     const buttonClose = elements.createBtn({
         classList: "close",
-        onClick(){
+        onClick() {
             popup.remove();
             overlay.remove();
             const callBtn = document.querySelector('.callBtn');
         }
     });
 
-    const iClose =elements.createI({
+    const iClose = elements.createI({
         classList: "fas fa-times"
     });
 
@@ -42,45 +70,69 @@ function showPopupCallSeomeone(){
     divInFixedHeader.append(buttonClose, title);
     buttonClose.appendChild(iClose);
 
-}
-export default showPopupCallSeomeone;
+    const eventId = sessionStorage.getItem('eventOfTheDay');
+    console.log(eventId);
+    const auth = getAuth();
+    const db = getFirestore();
+    const docRef = doc(db, "events", eventId);
+    const usersRef = collection(db, "users");
 
-/* <div class="call hide">
-            <div class="fixed-header">
-                <div>
-                    <button class="close"><i class="fas fa-times"></i></button>
-                    <h2>Bellen naar:</h2>
-                </div>
-                <hr>
-            </div>
-            <div class="persons">
-                <a class="person" href="tel:0489034493">
-                    <img src="images/politie.png" alt="bel politie">
-                    <p>Politie</p>
-                </a>
-                <a class="person" href="tel:0489034493">
-                    <img src="https://www.thenews.com.pk/assets/uploads/updates/2021-01-13/773676_9402039_294840_094028_updates_updates.jpg"
-                        alt="bel politie">
-                    <p>Politie</p>
-                </a>
-                <a class="person" href="tel:0489034493">
-                    <img src="https://images.unsplash.com/photo-1494708001911-679f5d15a946?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
-                        alt="bel politie">
-                    <p>Politie</p>
-                </a>
-                <a class="person" href="tel:0489034493">
-                    <img src="images/politie.png" alt="bel politie">
-                    <p>Politie</p>
-                </a>
-                <a class="person" href="tel:0489034493">
-                    <img src="https://www.thenews.com.pk/assets/uploads/updates/2021-01-13/773676_9402039_294840_094028_updates_updates.jpg"
-                        alt="bel politie">
-                    <p>Politie</p>
-                </a>
-                <a class="person" href="tel:0489034493">
-                    <img src="https://images.unsplash.com/photo-1494708001911-679f5d15a946?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
-                        alt="bel politie">
-                    <p>Politie</p>
-                </a>
-            </div>
-        </div> */
+    onAuthStateChanged(auth, (user) => {
+        console.log(user);
+        if (navigator.geolocation) {
+            if (user) {
+
+                getEventLocation(user);
+            } else {
+
+            }
+        }
+    })
+
+
+
+    async function getEventLocation(user) {
+        const docSnap = await getDoc(docRef);
+        const x = document.querySelector('body');
+        divPersons.innerHTML = `
+        <a class="person" href="tel:101">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Police_of_Belgium_insignia.svg/640px-Police_of_Belgium_insignia.svg.png" alt="bel politie">
+            <p>Politie</p>
+        </a>`
+
+        if (docSnap.exists()) {
+            console.log(docSnap.data());
+            console.log(docSnap.data().joinedUsers);
+            docSnap.data().joinedUsers.forEach(async (friend) => {
+                if (friend != user.uid) {
+                    console.log(friend);
+
+                    const currentUserQuery = query(usersRef, where("userId", "==", friend));
+
+                    const querySnapshot = await getDocs(currentUserQuery);
+                    querySnapshot.forEach(async (document) => {
+                        console.log(document.data());
+                        divPersons.innerHTML += `
+                        <a class="person" href="tel:0${document.data().phoneNumber}">
+                        <img src=${document.data().avatar}
+                            alt="bel persoon">
+                        <p>${document.data().firstName} ${document.data().lastName}</p>
+                    </a>
+                        `
+                    })
+
+                }
+            })
+
+        } else {
+            console.log('does not exist');
+        }
+    }
+
+
+}
+
+const firebaseAppConfig = getFirebaseConfig();
+initializeApp(firebaseAppConfig);
+
+export default showPopupCallSeomeone;

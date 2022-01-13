@@ -15,7 +15,7 @@ self.addEventListener('install', (e)=>{
         })
         .then(()=>{
             if (DEBUG){
-                console.log('cached assets: ', OFLINE_URL);
+                // console.log('cached assets: ', OFLINE_URL);
             }
         })
         .catch((error)=>{
@@ -32,7 +32,7 @@ self.addEventListener('install', (e)=>{
 
 self.addEventListener('fetch', (e)=>{
     if(DEBUG){
-        console.log('[serviceworker] fetching:', e.request.url);
+        // console.log('[serviceworker] fetching:', e.request.url);
     }
     e.respondWith(
         fetch(e.request).catch((error)=>{

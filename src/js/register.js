@@ -69,7 +69,8 @@ async function register() {
                     userName: user.displayName,
                     phoneNumber: user.phoneNumber,
                     avatar: user.photoURL,
-                    phoneNumber: user.phoneNumber
+                    phoneNumber: user.phoneNumber,
+                    currentLocation: null
                 });
                 console.log("Document written with ID: ", docRef.id);
                 // const currentcontent = document.querySelector('.register-login-page');

@@ -110,7 +110,6 @@ function getDirections({
                                         draggable: false
                                     });
                                     map.addControl(directions, 'top-left');
-                    
                                     directions.setOrigin([position.coords.longitude, position.coords.latitude]);
                                     directions.setDestination(feature.center);
                                 });
