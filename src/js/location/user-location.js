@@ -66,9 +66,9 @@ function getUserLocation() {
 
                 // _________save location of current user_____
 
-                // map.on('load', () => {
-                //     setInterval(getLocationOfUser, 5000);
-                // })
+                map.on('load', () => {
+                    setInterval(getLocationOfUser, 5000);
+                })
                 
 
                 function getLocationOfUser() {
@@ -80,7 +80,8 @@ function getUserLocation() {
 
                         const querySnapshot = await getDocs(currentUserQuery);
                         querySnapshot.forEach(async (document) => {
-                            const locationCurrentUser = doc(db, "users", document);
+                            console.log(document.data())
+                            const locationCurrentUser = doc(db, "users", document.id);
                             // console.log(doc);
                             await updateDoc(locationCurrentUser, {
                                 currentLocation: [position.coords.longitude, position.coords.latitude]
@@ -121,129 +122,144 @@ function getUserLocation() {
 
                                 const joinedUsers = docSnap.data().joinedUsers;
 
-                                joinedUsers.forEach(async (userId) => {
-                                    // ____get information about users going to the event_____
-
-                                    const q = query(usersRef, where("userId", "==", userId));
-
-                                    // const querySnapshot = await getDocs(q);
-
-                                    const snapShot = onSnapshot(q, (querySnapshot) => {
-                                        querySnapshot.forEach((doc) => {
-                                            if (!(userId === user.uid)) {
-                                                console.log(doc.id, " => ", doc.data());
-
-
-                                                const geojson = {
-                                                    type: 'FeatureCollection',
-                                                    features: [{
-                                                        type: 'Feature',
-                                                        geometry: {
-                                                            type: 'Point',
-                                                            coordinates: doc.data().currentLocation
-                                                        },
-                                                        properties: {
-                                                            title: doc.data().userName,
-                                                            description: 'Bauterstraat, Parijs'
-                                                        }
-                                                    }]
-                                                };
-
-
-                                                // add markers to map
-                                                for (const feature of geojson.features) {
-                                                    // create a HTML element for each feature
-                                                    const el = document.createElement('div');
-                                                    el.className = 'marker';
-
-                                                    // make a marker for each feature and add to the map
-                                                    const newLocation = feature.geometry.coordinates
-                                                    new mapboxgl.Marker(el).setLngLat(feature.geometry.coordinates)
-                                                        .setPopup(
-                                                            new mapboxgl.Popup({
-                                                                offset: 25
-                                                            }) // add popups
-                                                            .setHTML(
-                                                                `<h3>${feature.properties.title}</h3><p>${feature.properties.description}</p>`
+                                function addMarkerToMap(){
+                                    joinedUsers.forEach(async (userId) => {
+                                        // ____get information about users going to the event_____
+    
+                                        const q = query(usersRef, where("userId", "==", userId));
+    
+                                        // const querySnapshot = await getDocs(q);
+    
+                                        const snapShot = onSnapshot(q, (querySnapshot) => {
+                                            querySnapshot.forEach((doc) => {
+                                                if (!(userId === user.uid)) {
+                                                    console.log(doc.id, " => ", doc.data());
+    
+    
+                                                    const geojson = {
+                                                        type: 'FeatureCollection',
+                                                        features: [{
+                                                            type: 'Feature',
+                                                            geometry: {
+                                                                type: 'Point',
+                                                                coordinates: doc.data().currentLocation
+                                                            },
+                                                            properties: {
+                                                                title: doc.data().userName,
+                                                                description: 'Bauterstraat, Parijs'
+                                                            }
+                                                        }]
+                                                    };
+    
+    
+                                                    // add markers to map
+                                                    for (const feature of geojson.features) {
+                                                        // create a HTML element for each feature
+                                                        const el = document.createElement('div');
+                                                        el.className = 'marker';
+    
+                                                        // make a marker for each feature and add to the map
+                                                        const newLocation = feature.geometry.coordinates
+                                                        new mapboxgl.Marker(el).setLngLat(feature.geometry.coordinates)
+                                                            .setPopup(
+                                                                new mapboxgl.Popup({
+                                                                    offset: 25
+                                                                }) // add popups
+                                                                .setHTML(
+                                                                    `<h3>${feature.properties.title}</h3><p>${feature.properties.description}</p>`
+                                                                )
                                                             )
-                                                        )
-                                                        .addTo(map);
-
-                                                    el.style.backgroundImage = `url(${doc.data().avatar})`;
+                                                            .addTo(map);
+    
+                                                        el.style.backgroundImage = `url(${doc.data().avatar})`;
+                                                    }
+    
+    
+    
+    
+    
                                                 }
-
-
-
-
-
-                                            }
-                                        })
+                                            })
+                                        });
+    
+    
+                                        // querySnapshot.forEach((doc) => {
+                                        //     if (!(userId === user.uid)) {
+                                        //         console.log(doc.id, " => ", doc.data());
+    
+    
+                                        //         const geojson = {
+                                        //             type: 'FeatureCollection',
+                                        //             features: [{
+                                        //                 type: 'Feature',
+                                        //                 geometry: {
+                                        //                     type: 'Point',
+                                        //                     coordinates: doc.data().currentLocation
+                                        //                 },
+                                        //                 properties: {
+                                        //                     title: doc.data().userName,
+                                        //                     description: 'Bauterstraat, Parijs'
+                                        //                 }
+                                        //             }]
+                                        //         };
+    
+    
+                                        //         // add markers to map
+                                        //         for (const feature of geojson.features) {
+                                        //             // create a HTML element for each feature
+                                        //             const el = document.createElement('div');
+                                        //             el.className = 'marker';
+    
+                                        //             // make a marker for each feature and add to the map
+                                        //             const newLocation = feature.geometry.coordinates
+                                        //             new mapboxgl.Marker(el).setLngLat(feature.geometry.coordinates)
+                                        //                 .setPopup(
+                                        //                     new mapboxgl.Popup({
+                                        //                         offset: 25
+                                        //                     }) // add popups
+                                        //                     .setHTML(
+                                        //                         `<h3>${feature.properties.title}</h3><p>${feature.properties.description}</p>`
+                                        //                     )
+                                        //                 )
+                                        //                 .addTo(map);
+    
+                                        //             el.style.backgroundImage = `url(${doc.data().avatar})`;
+                                        //         }
+    
+    
+    
+    
+    
+                                        //     }
+    
+    
+                                        // });
+    
+                                        // console.log(userId);
+                                        // const docRefUser = doc(db, "users", "IntPbGb0slhWnhWhJWdPYh87P6u1");
+                                        // const docSnapUser = await getDoc(docRefUser);
+    
+                                        // if (docSnapUser.exists()) {
+                                        //     // get users that are going to the event
+                                        //     console.log(docSnapUser.data());
+                                        // } else {
+                                        //     console.log('no user fund');
+                                        // }
                                     });
-
-
-                                    // querySnapshot.forEach((doc) => {
-                                    //     if (!(userId === user.uid)) {
-                                    //         console.log(doc.id, " => ", doc.data());
-
-
-                                    //         const geojson = {
-                                    //             type: 'FeatureCollection',
-                                    //             features: [{
-                                    //                 type: 'Feature',
-                                    //                 geometry: {
-                                    //                     type: 'Point',
-                                    //                     coordinates: doc.data().currentLocation
-                                    //                 },
-                                    //                 properties: {
-                                    //                     title: doc.data().userName,
-                                    //                     description: 'Bauterstraat, Parijs'
-                                    //                 }
-                                    //             }]
-                                    //         };
-
-
-                                    //         // add markers to map
-                                    //         for (const feature of geojson.features) {
-                                    //             // create a HTML element for each feature
-                                    //             const el = document.createElement('div');
-                                    //             el.className = 'marker';
-
-                                    //             // make a marker for each feature and add to the map
-                                    //             const newLocation = feature.geometry.coordinates
-                                    //             new mapboxgl.Marker(el).setLngLat(feature.geometry.coordinates)
-                                    //                 .setPopup(
-                                    //                     new mapboxgl.Popup({
-                                    //                         offset: 25
-                                    //                     }) // add popups
-                                    //                     .setHTML(
-                                    //                         `<h3>${feature.properties.title}</h3><p>${feature.properties.description}</p>`
-                                    //                     )
-                                    //                 )
-                                    //                 .addTo(map);
-
-                                    //             el.style.backgroundImage = `url(${doc.data().avatar})`;
-                                    //         }
+                                }
+                                
+                                addMarkerToMap();
 
 
 
-
-
-                                    //     }
-
-
-                                    // });
-
-                                    // console.log(userId);
-                                    // const docRefUser = doc(db, "users", "IntPbGb0slhWnhWhJWdPYh87P6u1");
-                                    // const docSnapUser = await getDoc(docRefUser);
-
-                                    // if (docSnapUser.exists()) {
-                                    //     // get users that are going to the event
-                                    //     console.log(docSnapUser.data());
-                                    // } else {
-                                    //     console.log('no user fund');
-                                    // }
-                                });
+                                setInterval(()=>{
+                                    const markerDivs = document.querySelectorAll('.marker');
+                                    markerDivs.forEach(markerDiv =>{
+                                        markerDiv.remove();
+                                    })
+                                  
+                                    addMarkerToMap()
+                                }, 5000);
 
                             });
 
