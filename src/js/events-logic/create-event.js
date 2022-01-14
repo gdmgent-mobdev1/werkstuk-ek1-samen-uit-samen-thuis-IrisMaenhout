@@ -86,7 +86,8 @@ function saveEventInFirebase() {
                                 creatorUsername: user.displayName,
                                 createdOn: dateTimeToday,
                                 editedOn: null,
-                                isCanceled: false
+                                isCanceled: false,
+                                personInDanger: null
 
                             });
                             console.log("Document written with ID: ", docRef.id);

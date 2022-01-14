@@ -86,6 +86,8 @@ function showContentEventPage({street = '', city = '', info = '', createdOn ='',
         eventContent.append(titleEditedOn, dateEdited);
     }
 
+    eventContent.style.paddingBottom = '9em';
+
     locationEvent();
 
 
