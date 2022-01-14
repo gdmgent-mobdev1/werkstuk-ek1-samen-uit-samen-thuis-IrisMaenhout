@@ -56,6 +56,24 @@ const btnsMap = {
         const btn = elements.createBtn({
             classList: 'safe-btn btn-map-page',
             onClick() {
+
+                // const auth = getAuth();
+                const db = getFirestore();
+                const eventId = sessionStorage.getItem('eventOfTheDay');
+                const docRef = doc(db, "events", eventId);
+                async function sendUserIdToFiretore() {
+
+                    await updateDoc(docRef, {
+                        personInDanger: null
+                    });
+                    console.log('succes');
+
+                }
+                sendUserIdToFiretore();
+
+
+
+
                 const warning = document.querySelector('.warning-top');
                 warning.remove();
                 btn.remove();
@@ -125,7 +143,7 @@ const btnsMap = {
         btn.appendChild(iDirections);
     },
 
-    closeDirectionsBtn(){
+    closeDirectionsBtn() {
         const btn = elements.createBtn({
             classList: "directions-call closeDirectionsBtn btn-map-page",
             onClick() {

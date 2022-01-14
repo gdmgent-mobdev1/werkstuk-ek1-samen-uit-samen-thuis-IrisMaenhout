@@ -72,15 +72,17 @@ function getUserLocation() {
                     setInterval(getLocationOfUser, 5000);
                 })
 
-                const unsub = onSnapshot(doc(db, "events", eventId), (doc) => {
-                    console.log("Current data: ", doc.data());
-                    const q = query(usersRef, where("userId", "==", doc.data().personInDanger));
+                const unsub = onSnapshot(doc(db, "events", eventId), (docEvent) => {
+                    // console.log("Current data: ", doc.data());
+                    const q = query(usersRef, where("userId", "==", docEvent.data().personInDanger));
+                    console.log(docEvent.data().personInDanger);
 
                     // const querySnapshot = await getDocs(q);
 
                     const snapShot = onSnapshot(q, (querySnapshot) => {
                         querySnapshot.forEach((doc) => {
-                            if (doc.data().personInDanger != user.uid) {
+                            console.log(doc.data().personInDanger);
+                            if (docEvent.data().personInDanger != user.uid) {
 
                                 mapboxClient.geocoding
                                     .reverseGeocode({
@@ -101,7 +103,7 @@ function getUserLocation() {
                                             return;
                                         }
                                         const feature = response.body.features[0];
-                                        console.log(feature);
+                                        // console.log(feature);
                                         warningMessage({
                                             textContent: `${doc.data().userName} voelt zich onveilig in de ${feature.place_name}`
                                         })
@@ -115,14 +117,14 @@ function getUserLocation() {
 
                 function getLocationOfUser() {
                     navigator.geolocation.getCurrentPosition(async (position) => {
-                        console.log(position.coords.latitude + " " + position.coords.longitude)
+                        // console.log(position.coords.latitude + " " + position.coords.longitude)
 
                         // const locationCurrentUser = doc(db, "users", user.uid);
                         const currentUserQuery = query(usersRef, where("userId", "==", user.uid));
 
                         const querySnapshot = await getDocs(currentUserQuery);
                         querySnapshot.forEach(async (document) => {
-                            console.log(document.data())
+                            // console.log(document.data())
                             const locationCurrentUser = doc(db, "users", document.id);
                             // console.log(doc);
                             await updateDoc(locationCurrentUser, {
@@ -138,7 +140,7 @@ function getUserLocation() {
                     const docSnap = await getDoc(docRef);
 
                     if (docSnap.exists()) {
-                        console.log(docSnap.data());
+                        // console.log(docSnap.data());
 
 
 
@@ -175,7 +177,7 @@ function getUserLocation() {
                                                         return;
                                                     }
                                                     const feature = response.body.features[0];
-                                                    console.log(feature);
+                                                    // console.log(feature);
 
                                                     const geojson = {
                                                         type: 'FeatureCollection',

@@ -1,10 +1,40 @@
-
 import elements from '../../element-factory';
 import warningMessage from './warning-message';
 import btnsMap from './btns-map';
 
+import {
+    initializeApp
+} from 'firebase/app';
 
-function showPopupHelpMe(){
+import {
+    getAuth,
+    onAuthStateChanged
+} from "firebase/auth";
+
+import {
+    getFirestore,
+    collection,
+    addDoc,
+    doc,
+    getDoc,
+    query,
+    where,
+    onSnapshot,
+    updateDoc,
+    getDocs
+} from 'firebase/firestore';
+
+
+import {
+    getFirebaseConfig
+} from '../../firebase-config';
+
+function showPopupHelpMe() {
+
+    const db = getFirestore();
+    const eventId = sessionStorage.getItem('eventOfTheDay');
+
+
     const divPopup = elements.createDiv({
         classList: "warning-sending-location container"
     });
@@ -16,7 +46,7 @@ function showPopupHelpMe(){
         classList: "deactivate"
     });
 
-    btnDeactivate.addEventListener('click', ()=>{
+    btnDeactivate.addEventListener('click', () => {
         divPopup.remove();
         clearInterval(timer);
         clearTimeout(timeout);
@@ -37,7 +67,7 @@ function showPopupHelpMe(){
 
 
 
-    
+
     const contentSpa = document.querySelector('.content-spa');
     contentSpa.appendChild(divPopup);
     divPopup.append(textDiv, btnDeactivate);
@@ -48,13 +78,38 @@ function showPopupHelpMe(){
     let sec = 3
 
     const timer = setInterval(updateCountDown, 1000);
-    function updateCountDown(){
+
+    function updateCountDown() {
         sec = sec - 1;
-        boldSec.textContent= `${sec}s`;
+        boldSec.textContent = `${sec}s`;
     }
 
-    function sendWarning(){
-        clearInterval(timer);
+    async function updateFirestore() {
+        const auth = getAuth();
+        // console.log(auth);
+        onAuthStateChanged(auth, (user) => {
+            console.log(user);
+
+            if (user) {
+                const docRef = doc(db, "events", eventId);
+                async function sendUserIdToFiretore(){
+                    await updateDoc(docRef, {
+                        personInDanger: user.uid
+                    });
+                    console.log('succes');
+
+                }
+                sendUserIdToFiretore();
+            }
+        })
+
+    }
+
+
+    function sendWarning() {
+
+        updateFirestore();
+
         divPopup.remove();
         warningMessage({});
         btnsMap.showIamSafeBtn();
@@ -64,9 +119,12 @@ function showPopupHelpMe(){
     }
 
     const timeout = setTimeout(sendWarning, 3000);
-  
-    
+
+
 
 }
-export default showPopupHelpMe;
 
+
+const firebaseAppConfig = getFirebaseConfig();
+initializeApp(firebaseAppConfig);
+export default showPopupHelpMe;
