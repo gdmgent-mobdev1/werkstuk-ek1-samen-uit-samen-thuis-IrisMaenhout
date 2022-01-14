@@ -31,18 +31,18 @@ function showHeaderWhenScrolling(imageLink = '#', title = '', going = 'I want to
         textContent: title
     });
 
-    const btnHeader = elements.createBtn({
-        classList: 'transparent-btn-going',
-        textContent: going,
-        onclick() {
+    // const btnHeader = elements.createBtn({
+    //     classList: 'transparent-btn-going',
+    //     textContent: going,
+    //     onclick() {
 
-        }
-    });
+    //     }
+    // });
 
     eventPage.appendChild(divHeaderWhileScrolling);
     divHeaderWhileScrolling.append(backgroundImage, divContent);
     divContent.append(iBack, divFlex);
-    divFlex.append(h2Title, btnHeader);
+    divFlex.appendChild(h2Title);
 
 }
 export default showHeaderWhenScrolling;

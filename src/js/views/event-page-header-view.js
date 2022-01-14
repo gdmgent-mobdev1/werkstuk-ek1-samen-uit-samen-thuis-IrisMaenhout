@@ -101,17 +101,17 @@ function showEventPage({
 
     pTime.innerHTML = `<i class="far fa-clock"></i>${time}`
 
-    const btnHeader = elements.createBtn({
-        classList: 'transparent-btn-going',
-        textContent: going,
-        onclick() {}
-    });
+    // const btnHeader = elements.createBtn({
+    //     classList: 'transparent-btn-going',
+    //     textContent: going,
+    //     onclick() {}
+    // });
 
     const contentSpaDiv = document.querySelector('.content-spa');
     contentSpaDiv.appendChild(eventPage);
     eventPage.appendChild(divEventHeader);
     divEventHeader.append(backroundImgEvent, contentDiv);
-    contentDiv.append(iBack, divBtns, imgEvent, InfoHeaderDiv, btnHeader);
+    contentDiv.append(iBack, divBtns, imgEvent, InfoHeaderDiv);
     divBtns.append(btnChange, btnAddUser, btnRemoveUser);
     btnChange.appendChild(iChange);
     btnAddUser.appendChild(iAddUser);

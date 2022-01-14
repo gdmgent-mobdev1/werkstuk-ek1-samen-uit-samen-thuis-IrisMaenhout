@@ -75,7 +75,6 @@ function getUserLocation() {
                 const unsub = onSnapshot(doc(db, "events", eventId), (docEvent) => {
                     // console.log("Current data: ", doc.data());
                     const q = query(usersRef, where("userId", "==", docEvent.data().personInDanger));
-                    console.log(docEvent.data().personInDanger);
                     if(docEvent.data().personInDanger === null){
                         const warningTop = document.querySelector('.warning-top');
                         if(warningTop != null){
@@ -87,7 +86,6 @@ function getUserLocation() {
 
                     const snapShot = onSnapshot(q, (querySnapshot) => {
                         querySnapshot.forEach((doc) => {
-                            console.log(doc.data().personInDanger);
                             if (docEvent.data().personInDanger != user.uid) {
 
                                 mapboxClient.geocoding
