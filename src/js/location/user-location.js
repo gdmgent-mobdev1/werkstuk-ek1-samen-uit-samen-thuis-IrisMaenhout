@@ -76,6 +76,12 @@ function getUserLocation() {
                     // console.log("Current data: ", doc.data());
                     const q = query(usersRef, where("userId", "==", docEvent.data().personInDanger));
                     console.log(docEvent.data().personInDanger);
+                    if(docEvent.data().personInDanger === null){
+                        const warningTop = document.querySelector('.warning-top');
+                        if(warningTop != null){
+                            warningTop.remove();
+                        }
+                    }
 
                     // const querySnapshot = await getDocs(q);
 
