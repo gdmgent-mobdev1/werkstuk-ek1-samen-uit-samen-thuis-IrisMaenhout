@@ -18,9 +18,9 @@ import {
 } from '../firebase-config';
 
 function showRegisterPage() {
-    const auth = getAuth();
-    onAuthStateChanged(auth, (user) => {
-        if (!user) {
+    // const auth = getAuth();
+    // onAuthStateChanged(auth, (user) => {
+    //     if (!user) {
             const spaDiv = document.querySelector('.content-spa');
 
             const registerOrLoginPage = elements.createDiv({
@@ -122,11 +122,11 @@ function showRegisterPage() {
             registerOrLoginPage.append(titleLogIn, formLoginRegister, primairBtnLoginPage, pLogin, linkToLoginPage);
             formLoginRegister.append(firstNameLabel, firstNameInput, lastNameLabel, lastNameInput, emailLabel, emailInput, passwordLabel, passwordInput);
 
-        } else {
-            window.location.href = `${window.location.protocol}//${window.location.host}/home`;
+        // } else {
+        //     window.location.href = `${window.location.protocol}//${window.location.host}/home`;
 
-        }
-    });
+        // }
+    // });
 
 }
 
