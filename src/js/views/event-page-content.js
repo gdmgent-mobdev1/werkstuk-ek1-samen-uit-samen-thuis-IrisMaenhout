@@ -8,6 +8,15 @@ function showContentEventPage({street = '', city = '', info = '', createdOn ='',
     const eventContent = elements.createDiv({
         classList: "event-content container"
     })
+
+    const titleInvitedPersons = elements.createHeading({
+        size: 2,
+        textContent: "Genodigden"
+    });
+
+    const invitedUsersDiv = elements.createDiv({
+        classList: "horizontal-scrolling-wrapper"
+    })
     const titleInfo = elements.createHeading({
         size: 2,
         textContent: "Info"
@@ -71,7 +80,7 @@ function showContentEventPage({street = '', city = '', info = '', createdOn ='',
     });
 
    eventPage.after(eventContent);
-    eventContent.append(titleInfo, contentInfo, titleLocation, mapDiv, streetP, cityP, titleExtraInfo, titleCreatedBy, divCreator, titleCreatedOn, dateCreated);
+    eventContent.append(titleInvitedPersons, invitedUsersDiv ,titleInfo, contentInfo, titleLocation, mapDiv, streetP, cityP, titleExtraInfo, titleCreatedBy, divCreator, titleCreatedOn, dateCreated);
     divCreator.append(avatarCreator, nameCreatorP);
 
     if(editedOn != null){

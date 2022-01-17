@@ -1164,6 +1164,10 @@ nav ul li:hover div, nav ul li:hover p {
 
 .header-account {
   display: flex;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 2;
   gap: 2em;
   align-items: baseline;
   padding: 1em;
@@ -1188,6 +1192,59 @@ nav ul li:hover div, nav ul li:hover p {
   height: 100vh;
   width: 100vw;
   margin: 0;
+}
+
+.horizontal-scrolling-wrapper {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 2em;
+  overflow-x: auto;
+  padding: 2em 0;
+  -webkit-overflow-scrolling: touch;
+}
+.horizontal-scrolling-wrapper_person {
+  flex: 0 0 auto;
+}
+.horizontal-scrolling-wrapper_person div {
+  width: 75px;
+  height: 75px;
+  display: flex;
+  align-items: center;
+  border-radius: 100%;
+  background-image: url("https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cGVyc29ufGVufDB8fDB8fA%3D%3D&w=1000&q=80");
+  background-size: cover;
+  background-position: center;
+}
+.horizontal-scrolling-wrapper_person div h4 {
+  margin: 0 auto;
+  display: none;
+  text-align: center;
+  width: 90%;
+}
+.horizontal-scrolling-wrapper_person div:hover {
+  background-image: none;
+  background-color: #5555c5;
+  transition: 0.8s;
+}
+.horizontal-scrolling-wrapper_person div:hover h4 {
+  display: block;
+}
+.horizontal-scrolling-wrapper_person .fas {
+  background-color: white;
+  padding: 0.3em;
+  border-radius: 100%;
+  float: right;
+  margin-top: -1em;
+  min-width: 25px;
+  max-width: 25px;
+}
+.horizontal-scrolling-wrapper_person .accepted {
+  color: #409b40;
+}
+.horizontal-scrolling-wrapper_person .rejected {
+  color: #a82929;
+  font-size: 18px;
+  text-align: center;
 }
 
 * {
@@ -1395,7 +1452,12 @@ hr {
 }
 
 .content-acount-page {
-  margin-top: 2em;
+  margin-top: 7em;
+}
+@media (min-width: 760px) {
+  .content-acount-page {
+    margin-top: 2em;
+  }
 }
 .content-acount-page p {
   margin-bottom: 2em;
@@ -1450,6 +1512,10 @@ hr {
 }
 .content-spa .mapbox-directions-steps {
   margin-top: 2em;
+}
+
+.personal-data-div {
+  margin: 7em auto 9em auto;
 }
 
 /*# sourceMappingURL=main.css.map */

@@ -11,8 +11,11 @@ import {
     getFirestore,
     collection,
     addDoc,
+    query,
     doc,
-    getDoc
+    getDoc,
+    getDocs,
+    where
 } from 'firebase/firestore';
 
 
@@ -35,11 +38,13 @@ import updateEventInFirebase from './events-logic/update-event';
 import saveEventInFirebase from './events-logic/create-event';
 import renderContentAcountSettings from './views/account-views/acount-settings-view';
 import renderHeaderAccount from './views/account-views/header-account';
-import changePersonalData from './views/account-views/personal-data';
+import changePersonalData from './account/edit-user-info';
 import getUserLocation from './location/user-location';
 import btnsMap from './views/map-view/btns-map';
 import activateHelpMeWithspeechRecognition from './location/speech-recognition';
 import getDirections from './location/directions';
+import showInvitedUsers from './views/invited-users-view';
+import personalDataView from "./views/account-views/personal-data";
 // import smallPopupView from './views/small-popup-view';
 
 import Navigo from 'navigo'; // When using ES modules.
@@ -69,7 +74,7 @@ function Router() {
     const spaDiv = document.querySelector('.content-spa');
     const startScreen = document.querySelector('.content-spa .primair');
 
-    
+
     const spaContent = document.querySelector('.content-spa');
     const body = document.querySelector('body');
     body.style.padding = 0;
@@ -88,7 +93,7 @@ function Router() {
             case '/':
             case '/start':
                 showStartScreen();
-              
+
                 break;
             case '/inloggen':
                 console.log(spaDiv);
@@ -128,11 +133,12 @@ function Router() {
 
                 renderNav();
                 renderHeaderAccount("Persoonlijke gegevens");
+                personalDataView();
                 changePersonalData();
                 break;
 
             case '/kaart':
-            
+
                 body.style.padding = 0;
 
                 map.id = "map-full-screen";
@@ -169,7 +175,7 @@ function Router() {
                 });
 
                 // show btns
-                
+
                 spaContent.append(divBtnsMap);
 
                 btnsMap.closeDirectionsBtn();
@@ -202,6 +208,65 @@ function Router() {
                         });
                         renderNav();
                         updateEventInFirebase();
+
+                        const invitedUsers = docSnap.data().invitedUsers;
+                        const acceptedUsers = docSnap.data().joinedUsers;
+                        const rejectedUsers = docSnap.data().rejectedUsers;
+                        const docUserRef = collection(db, "users");
+
+                        if (invitedUsers != []) {
+                            invitedUsers.forEach(async (user) => {
+                            
+                                const docUser = query(docUserRef, where("userId", "==", user));
+                                const querySnapshot = await getDocs(docUser);
+                                
+                                querySnapshot.forEach((documentUser) => {
+                                    console.log(documentUser.data());
+                                    showInvitedUsers({
+                                        displayName: documentUser.data().userName,
+                                        profilePicture: documentUser.data().avatar
+                                    });
+                                })
+                            });
+                        }
+
+                        if(acceptedUsers != []) {
+                            acceptedUsers.forEach(async (user) => {
+                                console.log(user);
+
+                               
+                                const docUser = query(docUserRef, where("userId", "==", user));
+                                const querySnapshot = await getDocs(docUser);
+                                
+                                querySnapshot.forEach((documentUser) => {
+                                    console.log(documentUser.data());
+                                    showInvitedUsers({
+                                        displayName: documentUser.data().userName,
+                                        accepted: true,
+                                        profilePicture: documentUser.data().avatar
+                                    });
+
+
+                                })
+
+                            });
+                        }
+
+                        if (rejectedUsers != []) {
+                            rejectedUsers.forEach(async(user) => {
+                                const docUser = query(docUserRef, where("userId", "==", user));
+                                const querySnapshot = await getDocs(docUser);
+                                
+                                querySnapshot.forEach((documentUser) => {
+                                    console.log(documentUser.data());
+                                    showInvitedUsers({
+                                        displayName: documentUser.data().userName,
+                                        accepted: false,
+                                        profilePicture: documentUser.data().avatar
+                                    });
+                                })
+                            });
+                        }
 
                         // smallPopupView();
                         // deleteEvent();

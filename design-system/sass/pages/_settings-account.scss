@@ -1,8 +1,14 @@
 @use '../abstracts/variables'as vars;
 @use "sass:map";
+@use '../abstracts/mediaqueries-mixins'as media;
+
 
 .content-acount-page{
-    margin-top: 2em;
+    margin-top: 7em;
+
+    @include media.for-tablet-portrait-up {
+        margin-top: 2em;
+    }
 
     p{
         margin-bottom: 2em;

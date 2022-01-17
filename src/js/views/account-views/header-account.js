@@ -9,6 +9,10 @@ function renderHeaderAccount(text){
         classList: "fas fa-chevron-left"
     });
 
+    icon.addEventListener('click', ()=>{
+        window.location.href = window.location.href = window.history.back(1);
+    })
+
     const titleHeader = elements.createHeading({
         size: 2,
         textContent: text
@@ -21,8 +25,3 @@ function renderHeaderAccount(text){
 }
 
 export default renderHeaderAccount;
-
-{/* <header>
-        <i class="fas fa-chevron-left"></i>
-        <h2>Acount</h2>
-    </header> */}

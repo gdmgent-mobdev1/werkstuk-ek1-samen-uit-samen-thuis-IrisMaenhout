@@ -19,9 +19,9 @@ import {
 
 function showLoginPage() {
 
-    const auth = getAuth();
-    onAuthStateChanged(auth, (user) => {
-        if (!user) {
+    // const auth = getAuth();
+    // onAuthStateChanged(auth, (user) => {
+    //     if (!user) {
             const spaDiv = document.querySelector('.content-spa');
 
             const registerOrLoginPage = elements.createDiv({
@@ -103,13 +103,13 @@ function showLoginPage() {
             registerOrLoginPage.append(titleLogIn, formLoginRegister, primairBtnLoginPage, lineLoginPage, WordOnLine, secundaryBtnLoginPage, pRegister, linkToRegisterPage);
             formLoginRegister.append(emailLabel, emailInput, passwordLabel, passwordInput);
             secundaryBtnLoginPage.append(googleIcon);
-        } else {
-            window.location.href = `${window.location.protocol}//${window.location.host}/home`;
-        }
-    })
+        // } else {
+        //     window.location.href = `${window.location.protocol}//${window.location.host}/home`;
+        // }
+    // })
 
 }
 
-const firebaseAppConfig = getFirebaseConfig();
-initializeApp(firebaseAppConfig);
+// const firebaseAppConfig = getFirebaseConfig();
+// initializeApp(firebaseAppConfig);
 export default showLoginPage;

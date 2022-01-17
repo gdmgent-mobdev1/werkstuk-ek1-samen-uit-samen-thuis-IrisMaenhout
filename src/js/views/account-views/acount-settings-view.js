@@ -4,6 +4,7 @@ import signOutFunction from "../../account/sign-out";
 import removeUser from "../../account/remove-account";
 import renderSmallPopup from "../popup-small-view";
 
+
 import {
     initializeApp
 } from 'firebase/app';

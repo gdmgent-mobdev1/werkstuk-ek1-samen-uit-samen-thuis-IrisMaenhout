@@ -1,0 +1,82 @@
+@use '../abstracts/variables'as vars;
+@use "sass:map";
+
+.horizontal-scrolling-wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 2em;
+    overflow-x: auto;
+    padding: 2em 0;
+
+    -webkit-overflow-scrolling: touch;
+
+
+    &_person {
+        // width: 75px;
+        // height: 75px;
+        flex: 0 0 auto;
+
+        div {
+            width: 75px;
+            height: 75px;
+            display: flex;
+            align-items: center;
+            // justify-content: center;
+            border-radius: 100%;
+
+            background-image: url('https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cGVyc29ufGVufDB8fDB8fA%3D%3D&w=1000&q=80');
+            background-size: cover;
+            background-position: center;
+
+            h4 {
+                margin: 0 auto;
+                display: none;
+                text-align: center;
+                width: 90%;
+            }
+
+            &:hover{
+                background-image: none;
+                background-color: map.get($map: vars.$colors, $key: primair-color);
+                transition: 0.8s;
+    
+                h4 {
+                    display: block;
+                    
+                }
+            }
+
+        }
+
+        .fas {
+            background-color: rgb(255, 255, 255);
+            padding: 0.3em;
+            border-radius: 100%;
+            float: right;
+            margin-top: -1em;
+            min-width: 25px;
+            max-width: 25px;
+        }
+
+        .accepted {
+            color: rgb(64, 155, 64);
+        }
+        .rejected {
+            color: rgb(168, 41, 41);
+            font-size: 18px;
+            text-align: center;
+        }
+
+        
+    }
+}
+
+//   .scrolling-wrapper-flexbox {
+//     display: flex;
+//     flex-wrap: nowrap;
+//     overflow-x: auto;
+
+//     .card {
+//       flex: 0 0 auto;
+//     }
+//   }

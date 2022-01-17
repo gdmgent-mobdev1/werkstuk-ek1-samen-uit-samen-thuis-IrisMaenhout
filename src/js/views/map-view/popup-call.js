@@ -113,7 +113,7 @@ function showPopupCallSeomeone() {
                     querySnapshot.forEach(async (document) => {
                         console.log(document.data());
                         divPersons.innerHTML += `
-                        <a class="person" href="tel:0${document.data().phoneNumber}">
+                        <a class="person" href="tel:${document.data().phoneNumber}">
                         <img src=${document.data().avatar}
                             alt="bel persoon">
                         <p>${document.data().firstName} ${document.data().lastName}</p>

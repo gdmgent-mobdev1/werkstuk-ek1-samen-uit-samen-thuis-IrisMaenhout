@@ -70,7 +70,7 @@ function signInGoogle() {
                     userName: user.displayName,
                     phoneNumber: user.phoneNumber,
                     avatar: user.photoURL,
-                    phoneNumber: user.phoneNumber
+                    currentLocation: null
                 });
                 console.log("Document written with ID: ", docRef.id);
                 window.location.href = `${window.location.protocol}//${window.location.host}/home`;

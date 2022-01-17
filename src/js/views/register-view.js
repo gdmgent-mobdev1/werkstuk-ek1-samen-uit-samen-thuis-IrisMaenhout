@@ -130,6 +130,6 @@ function showRegisterPage() {
 
 }
 
-const firebaseAppConfig = getFirebaseConfig();
-initializeApp(firebaseAppConfig);
+// const firebaseAppConfig = getFirebaseConfig();
+// initializeApp(firebaseAppConfig);
 export default showRegisterPage;
