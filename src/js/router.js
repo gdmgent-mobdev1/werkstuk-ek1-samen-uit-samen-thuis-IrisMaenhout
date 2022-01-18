@@ -39,7 +39,7 @@ import renderHeaderAccount from './views/account-views/header-account';
 import changePersonalData from './account/edit-user-info';
 import getUserLocation from './location/user-location';
 import btnsMap from './views/map-view/btns-map';
-import activateHelpMeWithspeechRecognition from './location/speech-recognition';
+// import activateHelpMeWithspeechRecognition from './location/speech-recognition';
 import getDirections from './location/directions';
 import showInvitedUsers from './views/invited-users-view';
 import personalDataView from "./views/account-views/personal-data";
