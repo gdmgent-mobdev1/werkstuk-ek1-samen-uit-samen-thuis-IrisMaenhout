@@ -44,8 +44,6 @@ function locationEvent() {
         const docSnap = await getDoc(docRef);
 
         if (docSnap.exists()) {
-            console.log("Document data IS", docSnap.data());
-
 
             const mapboxClient = mapboxSdk({
                 accessToken: mapboxgl.accessToken
@@ -89,26 +87,6 @@ function locationEvent() {
     }
 
     getEventLocation();
-
-    // mapboxgl.accessToken = 'pk.eyJ1IjoiaXJpczI1IiwiYSI6ImNrbnlpNDAycTFncDQydnBzNHZtenc5YmgifQ.bd83th8-EvfgccRGiPtctA';
-    // const map = new mapboxgl.Map({
-    //     container: 'map', // container ID
-    //     style: 'mapbox://styles/iris25/cky0jc36o94xi14qu6wwn0abf', // style URL
-    //     center: [-74.5, 40], // starting position [lng, lat]
-    //     zoom: 9 // starting zoom
-    // });
-
-
-
-    
-    
-
-
-
-
-
-
-
 }
 
 const firebaseAppConfig = getFirebaseConfig();

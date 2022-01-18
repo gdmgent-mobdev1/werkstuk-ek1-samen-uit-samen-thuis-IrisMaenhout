@@ -1,5 +1,3 @@
-// import request = require("lib/lib/request");
-
 // ____________service worker______________
 const DEBUG = true;
 const OFLINE_URL = 'offline.html';
@@ -19,21 +17,12 @@ self.addEventListener('install', (e)=>{
             }
         })
         .catch((error)=>{
-            console.log(error)
+            console.error(error)
         })
     )
 });
 
-// self.addEventListener('activate', (e)=>{
-//     if(DEBUG){
-//         console.log('[serviceworker] is active & redy to hanle fetches.')
-//     };
-// });
-
 self.addEventListener('fetch', (e)=>{
-    if(DEBUG){
-        // console.log('[serviceworker] fetching:', e.request.url);
-    }
     e.respondWith(
         fetch(e.request).catch((error)=>{
             if(DEBUG){

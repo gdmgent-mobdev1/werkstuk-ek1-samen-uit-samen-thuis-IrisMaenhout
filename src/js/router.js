@@ -1,7 +1,5 @@
-// import contentSpaDiv from './main';
 import 'regenerator-runtime/runtime';
 import elements from './element-factory';
-// import showPopUpEditEvent from '../views/create-edit-event-view';
 
 import {
     initializeApp
@@ -47,34 +45,17 @@ import showInvitedUsers from './views/invited-users-view';
 import personalDataView from "./views/account-views/personal-data";
 // import smallPopupView from './views/small-popup-view';
 
-import Navigo from 'navigo'; // When using ES modules.
+import Navigo from 'navigo';
 const router = new Navigo('/');
 const db = getFirestore();
 
-
-
-// function startNavigo(element) {
-
-//   const router = new Navigo("/");
-//   const navigoRoutes = routes(element);
-
-//   router.on(navigoRoutes).resolve();
-
-//   return () => {
-//     router.destroy();
-//   }
-
-// }
 function Router() {
+    // get part of url behind the website/localhost url
     const rootUrl = `${window.location.protocol}//${window.location.host}`;
-    console.log(rootUrl.length);
     const fullUrl = window.location.href;
     const locationUrl = fullUrl.slice(rootUrl.length);
-    console.log(locationUrl);
-    const spaDiv = document.querySelector('.content-spa');
+
     const startScreen = document.querySelector('.content-spa .primair');
-
-
     const spaContent = document.querySelector('.content-spa');
     const body = document.querySelector('body');
     body.style.padding = 0;
@@ -88,7 +69,7 @@ function Router() {
 
 
     router.on(locationUrl, function () {
-        spaDiv.innerHTML = '';
+        spaContent.innerHTML = '';
         switch (locationUrl) {
             case '/':
             case '/start':
@@ -96,8 +77,6 @@ function Router() {
 
                 break;
             case '/inloggen':
-                console.log(spaDiv);
-                console.log(startScreen);
                 showLoginPage();
                 body.style.paddingBottom = "6em";
                 break;
@@ -124,7 +103,6 @@ function Router() {
                 renderNav();
                 renderHeaderAccount("Account");
                 renderContentAcountSettings();
-                // body.style.padding = "6em";
 
 
                 break;
@@ -144,7 +122,7 @@ function Router() {
                 map.id = "map-full-screen";
                 spaContent.append(map);
 
-                // show mapbox & directions
+                // show map with the location of your friends that are going to the same event as you
                 getUserLocation();
 
                 // show btns
@@ -152,11 +130,6 @@ function Router() {
 
                 btnsMap.showDirectionBtn();
                 btnsMap.showHelpBtn();
-
-
-                // activateHelpMeWithspeechRecognition();
-
-
 
                 break;
 
@@ -168,16 +141,13 @@ function Router() {
                 spaContent.append(map, instructionsDiv);
 
                 // show mapbox & directions
-                // getDirections();
                 const vehicleChoice = sessionStorage.getItem('vehicle');
                 getDirections({
                     vehicle: vehicleChoice
                 });
 
                 // show btns
-
                 spaContent.append(divBtnsMap);
-
                 btnsMap.closeDirectionsBtn();
                 btnsMap.showHelpBtn();
 
@@ -189,7 +159,6 @@ function Router() {
                     const docSnap = await getDoc(docRef);
 
                     if (docSnap.exists()) {
-                        console.log("Document data:", docSnap.data());
                         showEventPage({
                             imageLink: docSnap.data().imgEvent,
                             title: docSnap.data().title,
@@ -221,7 +190,6 @@ function Router() {
                                 const querySnapshot = await getDocs(docUser);
                                 
                                 querySnapshot.forEach((documentUser) => {
-                                    console.log(documentUser.data());
                                     showInvitedUsers({
                                         displayName: documentUser.data().userName,
                                         profilePicture: documentUser.data().avatar
@@ -232,21 +200,15 @@ function Router() {
 
                         if(acceptedUsers != []) {
                             acceptedUsers.forEach(async (user) => {
-                                console.log(user);
-
-                               
                                 const docUser = query(docUserRef, where("userId", "==", user));
                                 const querySnapshot = await getDocs(docUser);
                                 
                                 querySnapshot.forEach((documentUser) => {
-                                    console.log(documentUser.data());
                                     showInvitedUsers({
                                         displayName: documentUser.data().userName,
                                         accepted: true,
                                         profilePicture: documentUser.data().avatar
                                     });
-
-
                                 })
 
                             });
@@ -258,7 +220,6 @@ function Router() {
                                 const querySnapshot = await getDocs(docUser);
                                 
                                 querySnapshot.forEach((documentUser) => {
-                                    console.log(documentUser.data());
                                     showInvitedUsers({
                                         displayName: documentUser.data().userName,
                                         accepted: false,
@@ -268,13 +229,8 @@ function Router() {
                             });
                         }
 
-                        // smallPopupView();
-                        // deleteEvent();
-
                     } else {
-
-                        console.log("No such document!");
-                        console.log(`404: Sorry, we didn't found the page`);
+                        console.error(`404: Sorry, we didn't found the page`);
                     }
                 }
 
@@ -287,24 +243,7 @@ function Router() {
     });
 
     router.resolve();
-
-    // router.navigate('/inloggen');
 }
-
-
-
-// const Router = {
-//     router: null,
-//     getRouter(){
-//         if(!this.router){
-//             const rootUrl = `${window.location.protocol}//${window.location.host}`;
-//             console.log(rootUrl);
-//             this.router = new Navigo(rootUrl, false);
-//         }
-
-//         return this.router;
-//     }
-// }
 
 const firebaseAppConfig = getFirebaseConfig();
 initializeApp(firebaseAppConfig);

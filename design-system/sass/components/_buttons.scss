@@ -102,6 +102,8 @@
     }
 }
 
+// delete event btn
+
 .delete-btn {
     background-color: map.get($map: vars.$colors, $key: popup-background-color);
     border: 1px solid map.get($map: vars.$colors, $key: warning-color);
@@ -243,12 +245,9 @@
         border-radius: 100%;
         width: fit-content;
         background-color: map.get($map: vars.$colors, $key: background-color);
-        // z-index: 30;
 
         .add-event-btn {
             border-radius: 100%;
-            // background-color: map.get($map: vars.$colors, $key: primair-color);
-            // border: none;
             @extend %primary;
             margin: 0.5em;
 

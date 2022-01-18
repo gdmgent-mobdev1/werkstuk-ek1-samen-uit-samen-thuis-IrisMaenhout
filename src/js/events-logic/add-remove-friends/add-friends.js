@@ -19,11 +19,7 @@ import {
     getDoc,
     setDoc,
     addDoc,
-    doc,
-    query,
-    onSnapshot,
-    where,
-    serverTimestamp
+    doc
 } from "firebase/firestore";
 
 import {
@@ -44,13 +40,9 @@ function inviteFriends() {
 
             // __________get event id_________________
             const rootUrl = `${window.location.protocol}//${window.location.host}`;
-            console.log(rootUrl.length);
             const fullUrl = window.location.href;
             const locationUrl = fullUrl.slice(rootUrl.length);
-            console.log(locationUrl);
             const eventId = locationUrl.slice(11);
-            console.log(eventId);
-
             const eventRef = doc(db, "events", eventId);
 
 
@@ -59,13 +51,10 @@ function inviteFriends() {
                 const getAllUsersQuery = await getDocs(collection(db, "users"));
                 clearResults();
                 if (searchValue.length > 0) {
-                    // usersListDiv.classList.add('hide');
                     getAllUsersQuery.forEach(async (doc) => {
-                        // console.log(doc.data());
                         let userName = doc.data().userName;
                         userName = userName.toLowerCase();
 
-                        // console.log(userName);
                         const docSnap = await getDoc(eventRef);
                         if (docSnap.exists()) {
                             if (!(docSnap.data().invitedUsers.includes(doc.data().userId)) || !(docSnap.data().joinedUsers.includes(doc.data().userId))) {
@@ -98,7 +87,6 @@ function inviteFriends() {
                                         `;
 
                                         iAddUser.addEventListener('click', async () => {
-                                            console.log(divPerson);
 
                                             await updateDoc(eventRef, {
                                                 invitedUsers: arrayUnion(doc.data().userId)
@@ -114,20 +102,12 @@ function inviteFriends() {
                             }
                         }
 
-
-
-
                     })
-                } else {
-
                 }
 
             }
 
             searchElement.addEventListener("keyup", getAllUsers);
-
-
-
 
         } else {
 

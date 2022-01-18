@@ -3,7 +3,7 @@
 @use "sass:map";
 
 
-// ____________________________________________________________________
+// _________________event card________________________________
 .event{
 
     @extend %event-card;
@@ -15,7 +15,7 @@
 
 
 
-// _____________________________________________________
+// _________________incitetion event card_________________________
 .invitation{
     @extend %event-card;
 
@@ -47,7 +47,6 @@
 
             &:hover{
                 background-color: rgba(164, 131, 255, 0.986);
-                // transition: 0.5s;
                 cursor: pointer;
                 border-bottom-left-radius: 20px;
             }

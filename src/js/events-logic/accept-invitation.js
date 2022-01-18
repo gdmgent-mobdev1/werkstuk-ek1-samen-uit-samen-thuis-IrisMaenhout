@@ -7,8 +7,6 @@ import {
 
 import {
     getAuth,
-    createUserWithEmailAndPassword,
-    updateProfile,
     onAuthStateChanged
 } from 'firebase/auth';
 
@@ -62,8 +60,6 @@ function acceptInvitation(e) {
             updateEventMembers();
 
             
-
-        } else {
 
         }
     })

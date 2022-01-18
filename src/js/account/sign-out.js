@@ -21,7 +21,7 @@ function signOutFunction() {
                 window.location.href = `${window.location.protocol}//${window.location.host}/start`;
 
             }).catch((error) => {
-               console.log(error);
+               console.error(error);
             });
         }else{
             window.location.href = `${window.location.protocol}//${window.location.host}/start`;

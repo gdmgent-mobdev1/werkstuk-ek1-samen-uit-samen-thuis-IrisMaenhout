@@ -10,7 +10,6 @@ import {
 
 import {
     getAuth,
-    updateProfile,
     onAuthStateChanged
 } from 'firebase/auth';
 
@@ -60,7 +59,6 @@ function showAddInfoPage() {
             async function getImageFirebase() {
                 const usersRef = collection(db, "users");
                 const q = query(usersRef, where("userId", "==", getAuth().currentUser.uid));
-                // const querySnapshot = await getDoc(q);
                 const snapshot = onSnapshot(q, (querySnapshot) => {
                     querySnapshot.forEach((doc) => {
                         imgAvatar.src = doc.data().avatar;
@@ -122,10 +120,7 @@ function showAddInfoPage() {
                 textContent: "Opslaan",
                 classList: 'primair',
                 onClick() {
-                    // window.location.href = "#";
-                    // registerOrLoginPage.remove();
                     extraInfo();
-
                 }
             });
 

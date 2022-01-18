@@ -92,45 +92,6 @@ function renderNav(){
     liNavItemProfile.appendChild(aNavItemProfile);
     aNavItemProfile.append(divNavItemProfile, pNavItemProfile);
     divNavItemProfile.appendChild(iNavItemProfile);
-
-
-
-    // <div class="nav-container">
-    //     <!-- nav -->
-    //     <nav>
-    //         <h2 class="logo">Samen uit, samen thuis</h2>
-    //         <ul>
-    //             <li>
-    //                 <a href="#typography">
-    //                     <div class="icon">
-    //                         <i class="fas fa-font"></i>
-    //                     </div>
-    //                     <p>Typography</p>
-    //                 </a>
-    //             </li>
-
-    //             <li>
-    //                 <a href="#color">
-    //                     <div class="icon"><i class="fas fa-palette"></i></div>
-    //                     <p>Color</p>
-    //                 </a>
-    //             </li>
-
-    //             <li>
-    //                 <a href="#components">
-    //                     <div class="icon"><i class="fas fa-puzzle-piece"></i></div>
-    //                     <p>Components</p>
-    //                 </a>
-    //             </li>
-    //             <li>
-    //                 <a href="#layout">
-    //                     <div class="icon"><i class="fas fa-file-alt"></i></i></div>
-    //                     <p>Layout</p>
-    //                 </a>
-    //             </li>
-    //         </ul>
-    //     </nav>
-    // </div>
 }
 
 export default renderNav;

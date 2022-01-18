@@ -1,6 +1,4 @@
 import 'regenerator-runtime/runtime';
-import elements from '../element-factory';
-import showPopUpEditEvent from '../views/create-edit-event-view';
 
 import {
     initializeApp
@@ -62,8 +60,9 @@ function saveEventInFirebase() {
                 const street = streetNr.substr(0, streetNr.indexOf(' '));
                 const imageUrl = sessionStorage.getItem('publicImageUrl');
 
+                // check if every field is filled in
+
                 if (title != '' && dateTime != '' && upload != '' && streetNr != '' && cityZip != '') {
-                    console.log('OK');
                     if (isNumber.test(streetNr) && isNumber.test(cityZip)) {
 
 
@@ -90,7 +89,6 @@ function saveEventInFirebase() {
                                 personInDanger: null
 
                             });
-                            console.log("Document written with ID: ", docRef.id);
                             window.location.href = `${window.location.protocol}//${window.location.host}/evenement/${docRef.id}`;
 
                         }
@@ -119,7 +117,6 @@ function saveEventInFirebase() {
                             input.style.backgroundColor = '#2A3153';
                         }
                     })
-                    console.log('NOT OK');
                 }
 
 

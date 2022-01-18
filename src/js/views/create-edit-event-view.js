@@ -1,5 +1,4 @@
 import elements from "../element-factory";
-import saveEventInFirebase from "../events-logic/create-event";
 import 'regenerator-runtime/runtime';
 
 import {
@@ -11,8 +10,6 @@ import {
 
 import {
     getAuth,
-    createUserWithEmailAndPassword,
-    updateProfile,
     onAuthStateChanged
 } from 'firebase/auth';
 
@@ -178,9 +175,6 @@ function showPopUpEditEvent({
 
     const btnCreate = elements.createBtn({
         classList: "primair"
-        // onClick() {
-        //     saveEventInFirebase();
-        // }
 
     });
 
@@ -219,7 +213,6 @@ function showPopUpEditEvent({
                 event.preventDefault();
                 var file = event.target.files[0];
                 savePicture(file);
-                console.log('changed');
             }
 
             async function savePicture(file) {
@@ -231,8 +224,6 @@ function showPopUpEditEvent({
                     const fileSnapshot = await uploadBytesResumable(newImageRef, file);
 
                     const publicImageUrl = await getDownloadURL(newImageRef);
-
-                    console.log(publicImageUrl);
                     sessionStorage.setItem('publicImageUrl', publicImageUrl);
 
                     btnUploadImg.style.borderColor = "#8aba57";
@@ -240,7 +231,6 @@ function showPopUpEditEvent({
                     btnUploadImg.style.backgroundColor='#191F3E';
 
                 } catch (error) {
-                    console.log('There was an error uploading a file to Cloud Storage:', error);
                     btnUploadImg.style.borderColor = "#ff4a4a";
                     btnUploadImg.style.color = "#ff4a4a";
                     btnUploadImg.style.backgroundColor='#191F3E';

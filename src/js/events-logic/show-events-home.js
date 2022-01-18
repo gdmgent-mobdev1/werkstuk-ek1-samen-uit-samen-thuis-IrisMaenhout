@@ -9,8 +9,6 @@ import {
 
 import {
     getAuth,
-    createUserWithEmailAndPassword,
-    updateProfile,
     onAuthStateChanged
 } from 'firebase/auth';
 
@@ -59,8 +57,6 @@ function showEventsOnSpecificDay() {
                 selectedMonthYear = selectedMonthYear.textContent.split(" ");
                 let selectedMonth = selectedMonthYear[0];
                 let selectedYear = selectedMonthYear[1];
-                console.log(selectedMonth);
-                console.log(selectedYear);
                 let numberMonth;
 
                 switch (selectedMonth) {
@@ -112,10 +108,9 @@ function showEventsOnSpecificDay() {
                         break;
 
                     default:
-                        console.log('type error');
+                        console.error('type error');
                 }
                 selectedMonthAndYear = [selectedYear, numberMonth];
-                // console.log(selectedMonthAndYear);
 
                 return selectedMonthAndYear;
             }
@@ -160,8 +155,6 @@ function showEventsOnSpecificDay() {
                     getMonthAndYear();
                     days = document.querySelectorAll('.days .day');
                     getSelectedDay();
-                    // checkInvitedUsers();
-                    // checkJoinedUsers();
                     filterdDotsEvents()
 
                 })
@@ -192,10 +185,8 @@ function showEventsOnSpecificDay() {
 
                         const snapShot = onSnapshot(dateQuery, (querySnapshot) => {
                             querySnapshot.forEach((doc) => {
-                                // const eventDot = day.querySelector('.event-in-calendar');
                                 if (activeFilter == 'all') {
                                     if (doc.data().joinedUsers.includes(user.uid)) {
-                                        // console.log(doc.data());
 
                                         renderCardEvent({
                                             imageLink: doc.data().imgEvent,
@@ -240,7 +231,6 @@ function showEventsOnSpecificDay() {
 
                                 } else {
                                     if (doc.data().invitedUsers.includes(user.uid)) {
-                                        // console.log(doc.data());
 
                                         renderCardInvitationEvent({
                                             imageLink: doc.data().imgEvent,
@@ -346,18 +336,14 @@ function showEventsOnSpecificDay() {
 
                 const snapShot = onSnapshot(joinedUsersQuery, (querySnapshot) => {
                     querySnapshot.forEach((doc) => {
-                        // console.log(doc.data().date);
                         const dateEvent = doc.data().date.split('-');
-                        // console.log(dateEvent);
                         const dayEvent = parseInt(dateEvent[2]);
-                        // console.log(selectedMonthAndYear[1]);
 
                         days.forEach((day) => {
                             const calendarDayArray = day.innerHTML.match(isNumber);
                             const calendarDay = parseInt(calendarDayArray[0]);
 
                             if (calendarDay === dayEvent && selectedMonthAndYear[1] === dateEvent[1] && dateEvent[0] == selectedMonthAndYear[0]) {
-                                // console.log(doc.data().title);
                                 const eventDot = day.querySelector('.event-in-calendar');
                                 eventDot.innerHTML += `<div class="dot-event accepted"></div>`
                             } else {
@@ -375,22 +361,16 @@ function showEventsOnSpecificDay() {
 
                 const snapShot = onSnapshot(invitedUsersQuery, (querySnapshot) => {
                     querySnapshot.forEach((doc) => {
-                        // console.log(doc.data().date);
                         const dateEvent = doc.data().date.split('-');
-                        // console.log(dateEvent);
                         const dayEvent = parseInt(dateEvent[2]);
 
                         days.forEach((day) => {
                             const calendarDayArray = day.innerHTML.match(isNumber);
                             const calendarDay = parseInt(calendarDayArray[0]);
-                            // console.log(selectedMonthAndYear[1]);
 
                             if (calendarDay === dayEvent && selectedMonthAndYear[1] === dateEvent[1] && dateEvent[0] == selectedMonthAndYear[0]) {
-                                // console.log(doc.data().title);
                                 const eventDot = day.querySelector('.event-in-calendar');
                                 eventDot.innerHTML += `<div class="dot-event invitation"></div>`
-                            } else {
-
                             }
                         });
 

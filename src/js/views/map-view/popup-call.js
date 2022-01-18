@@ -12,13 +12,10 @@ import {
 import {
     getFirestore,
     collection,
-    addDoc,
     doc,
     getDoc,
     query,
     where,
-    onSnapshot,
-    updateDoc,
     getDocs
 } from 'firebase/firestore';
 
@@ -71,20 +68,15 @@ function showPopupCallSeomeone() {
     buttonClose.appendChild(iClose);
 
     const eventId = sessionStorage.getItem('eventOfTheDay');
-    console.log(eventId);
     const auth = getAuth();
     const db = getFirestore();
     const docRef = doc(db, "events", eventId);
     const usersRef = collection(db, "users");
 
     onAuthStateChanged(auth, (user) => {
-        console.log(user);
         if (navigator.geolocation) {
             if (user) {
-
                 getEventLocation(user);
-            } else {
-
             }
         }
     })
@@ -101,17 +93,13 @@ function showPopupCallSeomeone() {
         </a>`
 
         if (docSnap.exists()) {
-            console.log(docSnap.data());
-            console.log(docSnap.data().joinedUsers);
             docSnap.data().joinedUsers.forEach(async (friend) => {
                 if (friend != user.uid) {
-                    console.log(friend);
 
                     const currentUserQuery = query(usersRef, where("userId", "==", friend));
-
                     const querySnapshot = await getDocs(currentUserQuery);
+
                     querySnapshot.forEach(async (document) => {
-                        console.log(document.data());
                         divPersons.innerHTML += `
                         <a class="person" href="tel:${document.data().phoneNumber}">
                         <img src=${document.data().avatar}

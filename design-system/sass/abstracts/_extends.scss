@@ -6,7 +6,6 @@
     border-radius: 20px;
     padding: 1em 0;
     color: map.get($map: vars.$colors, $key: white);
-    // padding: 1em 5em;
     width: 80%;
     max-width: 260px;
 }
@@ -42,7 +41,6 @@
     position: fixed;
     top: 50%;
     left: 50%;
-    /* bring your own prefixes */
     transform: translate(-50%, -50%);
 
     border: 1px solid map.get($map: vars.$colors, $key: white);

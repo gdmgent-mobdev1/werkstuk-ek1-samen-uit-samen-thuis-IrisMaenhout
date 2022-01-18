@@ -37,7 +37,6 @@ async function extraInfo() {
 
             const form = document.querySelector('form');
             const errorMessage = document.querySelector('.error');
-            console.log(errorMessage);
 
             if (errorMessage != null) {
                 errorMessage.remove();
@@ -45,8 +44,6 @@ async function extraInfo() {
 
             //_______checking if there are empty fields_______
             if (userName != '' && phoneNumber != '') {
-                console.log(userName);
-                console.log(phoneNumber);
 
                 // _________update auth_____________
 
@@ -55,10 +52,9 @@ async function extraInfo() {
                     phoneNumber: phoneNumber
                 }).then(() => {
                     console.log('profile is updated!');
-                    console.log(user);
 
                 }).catch((error) => {
-                    console.log(error);
+                    console.error(error);
                 });
 
                 // __________update firestore_________
@@ -77,7 +73,6 @@ async function extraInfo() {
                             window.location.href = `${window.location.protocol}//${window.location.host}/home`;
                         };
                         updateInfoFirestore();
-                        console.log('succes');
                         
                     });
                 }
@@ -86,8 +81,6 @@ async function extraInfo() {
 
 
             } else {
-                console.log('Er zijn velden die niet zijn ingevuld');
-
                 const errorMessageFields = elements.createParagraph({
                     classList: "error",
                     textContent: "Vul alle velden in"
@@ -96,7 +89,7 @@ async function extraInfo() {
             }
 
         } else {
-            console.log('no user found');
+            console.error('no user found');
         }
     });
 

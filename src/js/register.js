@@ -1,6 +1,5 @@
 import 'regenerator-runtime/runtime';
 import elements from './element-factory';
-import showAddInfoPage from './views/extra-info-user-view';
 
 import {
     initializeApp
@@ -8,9 +7,7 @@ import {
 
 import {
     getAuth,
-    createUserWithEmailAndPassword,
-    updateProfile,
-    onAuthStateChanged
+    createUserWithEmailAndPassword
 } from 'firebase/auth';
 
 
@@ -34,7 +31,6 @@ async function register() {
     const password = formData.get('password');
 
     const errorMessage = document.querySelector('.error');
-    console.log(errorMessage);
 
     if(errorMessage != null){
         errorMessage.remove();
@@ -44,19 +40,11 @@ async function register() {
 
     if(email != ''&& password !='' && firstName != '' && lastName !=''){
         try {
-
-            // const currentcontent = document.querySelector('.register-login-page');
-            // currentcontent.remove();
-            // showAddInfoPage();
-
-            //____registreren, staat nu onzichtbaar om development te vergemakkelijken______
-
-
+            // ____________register_____________
             await createUserWithEmailAndPassword(getAuth(), email, password);
-            // Signed in 
-            console.log(getAuth().currentUser);
 
-            // send info to firestore 
+
+            // _________send info to firestore__________
             const db = getFirestore();
 
             try {
@@ -71,18 +59,12 @@ async function register() {
                     avatar: user.photoURL,
                     currentLocation: null
                 });
-                console.log("Document written with ID: ", docRef.id);
-                // const currentcontent = document.querySelector('.register-login-page');
-                // currentcontent.remove();
-                // showAddInfoPage();
                 window.location.href = `${window.location.protocol}//${window.location.host}/registreer/extra-info`;
             } catch (e) {
                 console.error("Error adding document: ", e);
             }
     
         } catch (e) {
-            console.log(e);
-            
             const errorMessageFirebase = elements.createParagraph({
                 classList: "error",
                 textContent: `${e.message}`
@@ -91,8 +73,6 @@ async function register() {
             form.before(errorMessageFirebase);
         }
     }else{
-        console.log('Er zijn velden die niet zijn ingevuld');
-
         const errorMessageFields = elements.createParagraph({
             classList: "error",
             textContent: "Vul alle velden in"

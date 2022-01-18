@@ -1,13 +1,9 @@
 import elements from '../element-factory';
 import showCalendar from '../calendar';
-import renderCardEvent from './event-cards-view';
-import renderCardInvitationEvent from './event-invitation-card-view';
 import showPopUpEditEvent from './create-edit-event-view';
 import saveEventInFirebase from '../events-logic/create-event';
 
 function showHomePage(){
-    console.log('dit is de home pagina');
-
     const spaDiv = document.querySelector('.content-spa');
 
     const homePage = elements.createDiv({
@@ -28,24 +24,15 @@ function showHomePage(){
 
     const filterBtnAll = elements.createBtn({
         textContent: "All",
-        classList: "filter all active-filter all-active-filter",
-        onClick(){
-
-        }
+        classList: "filter all active-filter all-active-filter"
     });
     const filterBtnAccepted = elements.createBtn({
         textContent: "Geaccepteerd",
-        classList: "filter accepted",
-        onClick(){
-
-        }
+        classList: "filter accepted"
     });
     const filterBtnInvitation = elements.createBtn({
         textContent: "Uitnodigingen",
-        classList: "filter invitation",
-        onClick(){
-
-        }
+        classList: "filter invitation"
     });
 
     // _______________calendar_____________________

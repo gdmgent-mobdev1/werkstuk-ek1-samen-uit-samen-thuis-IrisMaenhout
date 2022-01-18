@@ -99,13 +99,8 @@ function showEventPage({
 
     const pTime = elements.createParagraph({});
 
-    pTime.innerHTML = `<i class="far fa-clock"></i>${time}`
+    pTime.innerHTML = `<i class="far fa-clock"></i>${time}`;
 
-    // const btnHeader = elements.createBtn({
-    //     classList: 'transparent-btn-going',
-    //     textContent: going,
-    //     onclick() {}
-    // });
 
     const contentSpaDiv = document.querySelector('.content-spa');
     contentSpaDiv.appendChild(eventPage);
@@ -132,7 +127,6 @@ function showEventPage({
             eventPage.appendChild(divEventHeader);
             const divHeaderWhileScrolling = document.querySelector(".header-while-scrolling");
             if(divHeaderWhileScrolling != null){
-                // console.log(divHeaderWhileScrolling)
                 divHeaderWhileScrolling.remove();
                 contentEventPage.style.paddingTop = "0em";
             }

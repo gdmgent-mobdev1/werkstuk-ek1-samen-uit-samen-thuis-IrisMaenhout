@@ -34,18 +34,14 @@ function changePersonalData() {
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
         if (user) {
-            console.log(user.uid);
             const db = getFirestore();
 
             const q = query(collection(db, "users"), where("userId", "==", user.uid));
 
             async function getUserDoc() {
                 const querySnapshot = await getDocs(q);
-                console.log(querySnapshot);
-                console.log('this is a message');
                 querySnapshot.forEach((doc) => {
 
-                    console.log(doc.id, " => ", doc.data());
                     inputValues(doc);
 
                     const sendInfoToFirestoreBtn = document.querySelector('.primair');
@@ -58,7 +54,7 @@ function changePersonalData() {
             getUserDoc();
 
 
-
+            // values of input fields
             function inputValues(doc) {
                 const email = document.getElementById('email');
                 email.value = doc.data().email;
@@ -76,7 +72,7 @@ function changePersonalData() {
 
             }
 
-
+            // update firestore
             function updateFirestore(docUser) {
 
                 const email = document.getElementById('email').value;
@@ -101,7 +97,6 @@ function changePersonalData() {
                     });
 
                     const userRef = doc(db, "users", docUser.id);
-                    console.log(userRef);
 
                     async function updateDocument() {
                         await updateDoc(userRef, {

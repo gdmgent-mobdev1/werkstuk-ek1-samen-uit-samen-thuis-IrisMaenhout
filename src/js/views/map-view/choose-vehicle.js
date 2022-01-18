@@ -1,5 +1,4 @@
 import elements from "../../element-factory";
-import getDirections from "../../location/directions";
 function chooseVehiclePopupView({locationEvent = ''}){
 
     const overlay = elements.createOverlay();

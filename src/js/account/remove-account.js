@@ -46,8 +46,6 @@ function removeUser() {
 
         const querySnapshot = await getDocs(q);
         querySnapshot.forEach(async (docUser) => {
-            console.log(docUser.id, " => ", docUser.data());
-
             await deleteDoc(doc(db, "users", docUser.id));
         });
 
@@ -56,7 +54,7 @@ function removeUser() {
         deleteUser(user).then(() => {
             console.log('user is removed')
         }).catch((error) => {
-            console.log(error);
+            console.error(error);
         });
     });
 

@@ -1,6 +1,3 @@
-import elements from "../element-factory";
-import renderCardEvent from "../views/event-cards-view";
-import renderCardInvitationEvent from "../views/event-invitation-card-view";
 import 'regenerator-runtime/runtime';
 
 import {
@@ -64,8 +61,6 @@ function rejectInvitation(e) {
             updateEventMembers();
 
             
-
-        } else {
 
         }
     })

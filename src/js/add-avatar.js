@@ -5,7 +5,6 @@ import {
 
 import {
     getAuth,
-    createUserWithEmailAndPassword,
     updateProfile,
     onAuthStateChanged
 } from 'firebase/auth';
@@ -14,10 +13,7 @@ import {
 import {
     getFirestore,
     collection,
-    addDoc,
     getDocs,
-    getDoc,
-    setDoc,
     doc,
     query,
     where,
@@ -56,15 +52,13 @@ async function addAvatar() {
                     const fileSnapshot = await uploadBytesResumable(newImageRef, file);
 
                     const publicImageUrl = await getDownloadURL(newImageRef);
-                    console.log(publicImageUrl);
 
                     updateProfile(getAuth().currentUser, {
                         photoURL: publicImageUrl
                     }).then(function () {
                         console.log('profile picture is updated');
-                        console.log(user);
                     }).catch(function (error) {
-                        console.log(error);
+                        console.error(error);
                     });
 
 
@@ -84,13 +78,13 @@ async function addAvatar() {
 
                     });
                 } catch (e) {
-                    console.log(e);
+                    console.error(e);
                 }
             }
 
             imagePicker.addEventListener('change', onMediaFileSelected);
         } else {
-            console.log('no user found');
+            console.error('no user found');
         }
     })
 }

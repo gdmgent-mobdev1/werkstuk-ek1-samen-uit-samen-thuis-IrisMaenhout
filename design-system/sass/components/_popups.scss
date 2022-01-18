@@ -11,7 +11,6 @@
     top: 0;
     left: 0;
     z-index: 2;
-    // padding: 0 20%;
 }
 
 
@@ -57,7 +56,7 @@
     }
 }
 
-// ___________________________________________________________
+// _____________________popup for creating or updating an evenent_________________________
 
 
 .create-edit-event {
@@ -131,7 +130,6 @@
 
                 .secundary {
                     display: inline-block;
-                    // height: 40px;
                     padding: 0.3em;
                     width: 100%;
                     text-align: center;
@@ -165,7 +163,7 @@
 
 
 
-// __________________________________________________________
+// ______________________popup for calling a friend_______________________
 
 .call {
     @extend %popup;
@@ -211,7 +209,7 @@
 
 }
 
-// _____________________________________________________________
+// _________________________popup for inviting friends__________________
 
 .invite-friends {
     @extend %popup;
@@ -300,7 +298,7 @@
     }
 }
 
-// ________________________________________________________________
+// _____________________meldet form______________________
 
 .meldet-form {
     .primair {
@@ -390,7 +388,7 @@
 }
 
 
-// _____________________________________________________________
+// ____________________________warning popup________________
 
 .warning-sending-location {
     @extend %popup;
@@ -409,7 +407,6 @@
     }
 
     .deactivate {
-        // height: 50px;
         border-radius: 0 0 10px 10px;
         background-color: map.get($map: vars.$colors, $key: popup-background-color);
 
@@ -426,7 +423,7 @@
     }
 }
 
-// ___________________________________________________________________
+// ______________________warning message at the top of the page_________________________
 
 .warning-top {
     background-color: map.get($map: vars.$colors, $key: warning-color);
@@ -445,7 +442,7 @@
     }
 }
 
-// ______________________________________________________________
+// _________________popup choose a vehicle________________________
 
 .directions-vehicles-choice {
     background-color: map.get($map: vars.$colors, $key: directions-color);
@@ -479,7 +476,7 @@
 }
 
 
-// __________________________________________________________
+// __________________________route duration__________________
 
 .route-duration {
     background-color: map.get($map: vars.$colors, $key: directions-color);
@@ -502,7 +499,7 @@
     }
 }
 
-// _______________________________________________________________
+// _____________________directions popup_______________________
 
 .directions {
     background-color: map.get($map: vars.$colors, $key: directions-color);

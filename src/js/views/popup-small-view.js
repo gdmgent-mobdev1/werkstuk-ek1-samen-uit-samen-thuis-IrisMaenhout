@@ -1,8 +1,6 @@
 import elements from "../element-factory";
 
 function renderSmallPopup(text){
-    console.log('dit is de popup');
-
     const overlay = elements.createOverlay();
 
     const smallPopup = elements.createDiv({

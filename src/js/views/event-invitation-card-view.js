@@ -75,7 +75,6 @@ function renderCardInvitationEvent({imageLink = '#', title ='', location='', dat
         
     });
 
-    // const calendarHome = document.querySelector('.calendar-home');
     eventCardDiv.append(invitationsEventContainer);
     invitationsEventContainer.append(eventCard, btnsDiv);
     eventCard.append(imgTag, backgroundImgDiv, cardInfoDiv);

@@ -56,8 +56,6 @@ const btnsMap = {
         const btn = elements.createBtn({
             classList: 'safe-btn btn-map-page',
             onClick() {
-
-                // const auth = getAuth();
                 const db = getFirestore();
                 const eventId = sessionStorage.getItem('eventOfTheDay');
                 const docRef = doc(db, "events", eventId);
@@ -66,7 +64,6 @@ const btnsMap = {
                     await updateDoc(docRef, {
                         personInDanger: null
                     });
-                    console.log('succes');
 
                 }
                 sendUserIdToFiretore();

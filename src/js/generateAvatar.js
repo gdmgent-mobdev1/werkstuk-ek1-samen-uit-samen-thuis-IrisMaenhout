@@ -66,7 +66,6 @@ function showgenerateAvatar() {
                         await updateDoc(profilePictureFirestore, {
                             avatar: generateAvatar(`${firstName.toUpperCase().charAt(0)} ${lastName.toUpperCase().charAt(0)}`, "white", "#6A8BF5")
                         });
-                        console.log('succes');
                         
                     };
                     sendImgToFirebase();
@@ -76,15 +75,10 @@ function showgenerateAvatar() {
             getnameFirebase();
             
         }else{
-            console.log('user is not logged in');
+            console.error('user is not logged in');
         }
     })
 }
-
-
-
-
-
 
 const firebaseAppConfig = getFirebaseConfig();
 initializeApp(firebaseAppConfig);

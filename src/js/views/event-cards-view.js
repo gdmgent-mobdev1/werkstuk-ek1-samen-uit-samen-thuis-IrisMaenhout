@@ -50,7 +50,6 @@ function renderCardEvent({imageLink = '#', title ='', location='', date='', time
         window.location.href = `${window.location.protocol}//${window.location.host}/evenement/${id}`;
     });
 
-    // const calendarHome = document.querySelector('.calendar-home');
     eventCardDiv.append(eventsContainer);
     eventsContainer.append(eventCard);
     eventCard.append(imgTag, backgroundImgDiv, cardInfoDiv);

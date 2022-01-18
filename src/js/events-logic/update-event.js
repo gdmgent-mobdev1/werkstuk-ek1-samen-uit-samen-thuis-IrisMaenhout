@@ -45,19 +45,15 @@ function updateEventInFirebase() {
             const btnsDiv = document.querySelector('.btns-left');
             // __________get event id_________________
             const rootUrl = `${window.location.protocol}//${window.location.host}`;
-            console.log(rootUrl.length);
             const fullUrl = window.location.href;
             const locationUrl = fullUrl.slice(rootUrl.length);
-            console.log(locationUrl);
             const eventId = locationUrl.slice(11);
-            console.log(eventId);
 
             const docRef = doc(db, "events", eventId);
             async function getEvent() {
                 const docSnap = await getDoc(docRef);
 
                 if (docSnap.exists()) {
-                    console.log("Document data:", docSnap.data());
                     if (docSnap.data().creatorId == user.uid) {
                         btnsDiv.classList.remove('hide');
                         const updateBtn = document.querySelector('.update');
@@ -68,17 +64,16 @@ function updateEventInFirebase() {
 
                         })
 
-
-
                     }
                 } else {
-                    console.log("No such document!");
+                    console.error("No such document!");
 
                 }
             }
             getEvent();
 
 
+            //______values for inputfields___________
             function inputValues(docSnap) {
                 const title = document.getElementById('title');
 
@@ -102,11 +97,13 @@ function updateEventInFirebase() {
 
                 const inputfields = document.querySelectorAll('input');
 
+                //_____update btn_____
                 const sendInfoToFirestoreBtn = document.querySelector('.create-edit-event .primair');
                 sendInfoToFirestoreBtn.addEventListener('click', () => {
                     updateFirestore();
                 });
 
+                //_____delete btn_____
                 const deleteBtn = document.querySelector('.create-edit-event .delete-btn');
                 deleteBtn.addEventListener('click', () => {
                     deleteEvent();
@@ -114,6 +111,7 @@ function updateEventInFirebase() {
 
             }
 
+            // _____update event in firebase__________
             function updateFirestore() {
 
                 const title = document.getElementById('title').value;
@@ -138,18 +136,13 @@ function updateEventInFirebase() {
                 const time = dateTime.slice(11);
                 const date = dateTime.slice(0, 10);
 
-                console.log(time);
-                console.log(date);
-
                 const isNumber = /\d+/;
                 const number = streetNr.match(isNumber);
                 const zipCode = cityZip.match(isNumber);
-                console.log(number);
-                console.log(zipCode);
-
                 const city = cityZip.substr(0, cityZip.indexOf(' '));
                 const street = streetNr.substr(0, streetNr.indexOf(' '));
 
+                // check if every field is filled in
 
                 if (title != '' && dateTime != '' && streetNr != '' && cityZip != '') {
 
@@ -214,11 +207,6 @@ function updateEventInFirebase() {
 
 
                     }
-
-
-
-
-
 
 
                 } else {

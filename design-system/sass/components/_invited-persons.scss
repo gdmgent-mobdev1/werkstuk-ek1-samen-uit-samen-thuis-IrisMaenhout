@@ -12,8 +12,6 @@
 
 
     &_person {
-        // width: 75px;
-        // height: 75px;
         flex: 0 0 auto;
 
         div {
@@ -21,7 +19,6 @@
             height: 75px;
             display: flex;
             align-items: center;
-            // justify-content: center;
             border-radius: 100%;
 
             background-image: url('https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cGVyc29ufGVufDB8fDB8fA%3D%3D&w=1000&q=80');
@@ -70,13 +67,3 @@
         
     }
 }
-
-//   .scrolling-wrapper-flexbox {
-//     display: flex;
-//     flex-wrap: nowrap;
-//     overflow-x: auto;
-
-//     .card {
-//       flex: 0 0 auto;
-//     }
-//   }

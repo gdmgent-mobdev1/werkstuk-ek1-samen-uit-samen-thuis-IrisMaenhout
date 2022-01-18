@@ -1,28 +1,16 @@
-// import smallPopupView from '../views/small-popup-view';
-import elements from '../element-factory';
-
 import {
     initializeApp
 } from 'firebase/app';
 
 import {
     getAuth,
-    createUserWithEmailAndPassword,
-    updateProfile,
     onAuthStateChanged
 } from 'firebase/auth';
 
 
 import {
     getFirestore,
-    collection,
-    addDoc,
     doc,
-    getDoc,
-    query,
-    where,
-    onSnapshot,
-    updateDoc,
     deleteDoc
 } from 'firebase/firestore';
 
@@ -42,16 +30,12 @@ function deleteEvent() {
 
             // ___________get event id by using url_________
             const rootUrl = `${window.location.protocol}//${window.location.host}`;
-            console.log(rootUrl.length);
             const fullUrl = window.location.href;
             const locationUrl = fullUrl.slice(rootUrl.length);
-            console.log(locationUrl);
             const eventId = locationUrl.slice(11);
-            console.log(eventId);
 
 
             const db = getFirestore();
-            console.log('delete');
 
             // __________show warning popup____________
             renderSmallPopup('Weet je zeker dat je dit event wilt verwijderen?');
@@ -86,7 +70,7 @@ function deleteEvent() {
                 window.location.href = `${window.location.protocol}//${window.location.host}/home`;
                 warningPopup.remove();
                 overlay.forEach((x) => {
-                    x.remove()
+                    x.remove();
                 });
             }
 

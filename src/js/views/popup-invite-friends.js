@@ -52,33 +52,5 @@ function renderInviteFriendsPopup(text){
     fixedHeader.append(div, divSearch);
     div.append(titlePopup, iClose);
     divSearch.append(iSearch, inputSearch);
-
-    // inviteFriends();
-    // removeFriends();
 }
 export default renderInviteFriendsPopup;
-/* <div class="invite-friends hide">
-            <div class="invite-friends__fixed-header">
-                <div>
-                    <h2>Vrienden uitnodigen</h2>
-                    <i class="fas fa-times"></i>
-                </div>
-                <div class="search">
-                    <i class="fas fa-search"></i>
-                    <input type="search" placeholder="Zoek een persoon">
-                </div>
-            </div>
-
-            <div class="friends">
-                <div class="person">
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1494708001911-679f5d15a946?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
-                            alt="bel politie">
-                        <p>Ben clark</p>
-                    </div>
-                    <i class="fas fa-user-plus"></i>
-                </div>
-                
-
-            </div>
-        </div> */

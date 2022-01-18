@@ -66,31 +66,13 @@ function getDirections({
                             const feature = response.body.features[0];
 
                             const map = new mapboxgl.Map({
-                                container: 'map-full-screen', // container ID
+                                container: 'map-full-screen',
                                 style: 'mapbox://styles/iris25/cky0jc36o94xi14qu6wwn0abf',
-                                center: [position.coords.longitude, position.coords.latitude], // starting position [lng, lat]
+                                center: [position.coords.longitude, position.coords.latitude],
                                 zoom: 7
                                 // attributionControl: false    
                             });
 
-
-
-                            // const map = new mapboxgl.Map({
-                            //     container: 'map',
-                            //     style: 'mapbox://styles/iris25/cky0jc36o94xi14qu6wwn0abf',
-                            //     center: feature.center,
-                            //     zoom: 12
-                            // });
-
-                            // Create a marker and add it to the map.
-                            // new mapboxgl.Marker({
-                            //         color: "#5246F0"
-                            //     })
-                            //     .setLngLat(feature.center)
-                            //     .addTo(map);
-
-
-                    
                                 map.addControl(new mapboxgl.GeolocateControl({
                                     positionOptions: {
                                         enableHighAccuracy: true
@@ -129,30 +111,7 @@ function getDirections({
     } else {
         x.innerHTML = "Geolocation is not supported by this browser.";
     }
-    // mapboxgl.accessToken = 'pk.eyJ1IjoiaXJpczI1IiwiYSI6ImNrbnlpNDAycTFncDQydnBzNHZtenc5YmgifQ.bd83th8-EvfgccRGiPtctA';
-    // const map = new mapboxgl.Map({
-    //     container: 'map-full-screen',
-    //     style: 'mapbox://styles/mapbox/streets-v11',
-    //     center: [-79.4512, 43.6568],
-    //     zoom: 13
-    // });
-
-    // map.addControl(
-    //     new MapboxDirections({
-    //         accessToken: mapboxgl.accessToken
-    //     }),
-    //     'top-left'
-    // );
-
-
-    // var MapboxDirections = require('../src/index');
-    // var directions = new MapboxDirections({
-    //     accessToken: mapboxgl.accessToken,
-    //     unit: 'metric',
-    //     profile: 'mapbox/cycling'
-    // });
-    // // add to your mapboxgl map
-    // map.addControl(directions);
+    
 }
 const firebaseAppConfig = getFirebaseConfig();
 initializeApp(firebaseAppConfig);

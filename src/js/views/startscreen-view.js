@@ -1,6 +1,4 @@
 import elements from '../element-factory';
-import showLoginPage from './login-view';
-import showRegisterPage from './register-view';
 
 import {
     initializeApp
@@ -19,7 +17,6 @@ function showStartScreen() {
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
         if (!user) {
-            let bodyElement = document.body;
             let contentSpaDiv = document.querySelector('.content-spa');
 
             const divCenter = elements.createDiv({
@@ -35,10 +32,6 @@ function showStartScreen() {
                 classList: 'primair',
                 onClick() {
                     window.location.href = `${window.location.protocol}//${window.location.host}/inloggen`;
-                    // divCenter.remove();
-                    // showLoginPage();
-
-                    // router.navigate('/inloggen');
                 }
             });
 
@@ -46,11 +39,7 @@ function showStartScreen() {
                 textContent: "Registreer",
                 classList: 'secundary',
                 onClick() {
-                    // window.location.href = "#";
-                    // divCenter.remove();
-                    // showRegisterPage();
                     window.location.href = `${window.location.protocol}//${window.location.host}/registreer`;
-                    // router.navigate('/registreer');
                 }
             });
 

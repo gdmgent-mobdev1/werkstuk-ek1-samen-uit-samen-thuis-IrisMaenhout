@@ -1,7 +1,5 @@
 import elements from "../../element-factory";
 import addAvatar from '../../add-avatar';
-import showgenerateAvatar from '../../generateAvatar';
-
 
 import {
     initializeApp
@@ -9,7 +7,6 @@ import {
 
 import {
     getAuth,
-    updateProfile,
     onAuthStateChanged
 } from 'firebase/auth';
 
@@ -17,12 +14,8 @@ import {
 import {
     getFirestore,
     collection,
-    getDocs,
-    getDoc,
-    doc,
     query,
     where,
-    updateDoc,
     onSnapshot
 } from 'firebase/firestore';
 
@@ -35,8 +28,6 @@ function personalDataView() {
     const db = getFirestore();
     onAuthStateChanged(auth, (user) => {
         if (user) {
-            // showgenerateAvatar();
-
             const personalDataDiv = elements.createDiv({
                 classList: "personal-data-div container"
             });
@@ -56,7 +47,6 @@ function personalDataView() {
             async function getImageFirebase() {
                 const usersRef = collection(db, "users");
                 const q = query(usersRef, where("userId", "==", getAuth().currentUser.uid));
-                // const querySnapshot = await getDoc(q);
                 const snapshot = onSnapshot(q, (querySnapshot) => {
                     querySnapshot.forEach((doc) => {
                         imgAvatar.src = doc.data().avatar;
@@ -103,6 +93,7 @@ function personalDataView() {
                 required: true
             });
 
+            // ________________________________________________
             const phoneNumberLabel = elements.createLabel({
                 textContent: 'Telefoonnummer',
                 labelFor: "phone-number"
@@ -157,16 +148,12 @@ function personalDataView() {
                 required: true
             });
 
-            // __________________________________________
+            // __________________btn update info________________________
         
 
             const primairBtnLoginPage = elements.createBtn({
                 textContent: "Wijzigingen opslaan",
-                classList: 'primair',
-                onClick() {
-
-
-                }
+                classList: 'primair'
             });
 
             const contentSpaDiv = document.querySelector('.content-spa');
@@ -177,14 +164,10 @@ function personalDataView() {
             formPersonalData.append(emailLabel, emailInput, firstNameLabel, firstNameInput, lastNameLabel, lastNameInput ,userNameLabel, userNameInput, phoneNumberLabel, phoneNumberInput);
 
             addAvatar();
-            // changePersonalData();
         } else {
             window.location.href = `${window.location.protocol}//${window.location.host}/start`;
         }
     });
-
-
-
 
 }
 const firebaseAppConfig = getFirebaseConfig();

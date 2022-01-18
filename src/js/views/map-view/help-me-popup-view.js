@@ -13,13 +13,7 @@ import {
 
 import {
     getFirestore,
-    collection,
-    addDoc,
     doc,
-    getDoc,
-    query,
-    where,
-    onSnapshot,
     updateDoc,
     getDocs
 } from 'firebase/firestore';
@@ -75,8 +69,10 @@ function showPopupHelpMe() {
     btnDeactivate.appendChild(pBtn);
     pText.appendChild(boldSec);
 
-    let sec = 3
 
+    //____countdown from 3 to 0 and then send a notification______
+    
+    let sec = 3
     const timer = setInterval(updateCountDown, 1000);
 
     function updateCountDown() {
@@ -86,9 +82,7 @@ function showPopupHelpMe() {
 
     async function updateFirestore() {
         const auth = getAuth();
-        // console.log(auth);
         onAuthStateChanged(auth, (user) => {
-            console.log(user);
 
             if (user) {
                 const docRef = doc(db, "events", eventId);
@@ -96,7 +90,6 @@ function showPopupHelpMe() {
                     await updateDoc(docRef, {
                         personInDanger: user.uid
                     });
-                    console.log('succes');
 
                 }
                 sendUserIdToFiretore();

@@ -43,12 +43,9 @@ function removeFriends() {
 
             // __________get event id_________________
             const rootUrl = `${window.location.protocol}//${window.location.host}`;
-            console.log(rootUrl.length);
             const fullUrl = window.location.href;
             const locationUrl = fullUrl.slice(rootUrl.length);
-            console.log(locationUrl);
             const eventId = locationUrl.slice(11);
-
             const eventRef = doc(db, "events", eventId);
 
 
@@ -57,9 +54,7 @@ function removeFriends() {
                 const getAllUsersQuery = await getDocs(collection(db, "users"));
                 clearResults();
                 if (searchValue.length > 0) {
-                    // usersListDiv.classList.add('hide');
                     getAllUsersQuery.forEach(async (doc) => {
-                        // console.log(doc.data());
                         let userName = doc.data().userName;
                         userName = userName.toLowerCase();
 
@@ -97,7 +92,6 @@ function removeFriends() {
                                     `;
 
                                         iRemoveUser.addEventListener('click', async () => {
-                                            console.log(divPerson);
 
                                             await updateDoc(eventRef, {
                                                 invitedUsers: arrayRemove(doc.data().userId)
@@ -112,47 +106,17 @@ function removeFriends() {
 
                             }
                         } else {
-                            console.log("No such document!");
+                            console.error("No such document!");
                         }
 
                     })
 
-                } else {
-
                 }
 
-                // const removeUserbtns = document.querySelectorAll('.invite-friends .fa-user-minus');
-                // console.log(removeUserbtns);
 
-                // removeUserbtns.forEach((remove) => {
-                //     remove.addEventListener('click', async (e) => {
-                //         console.log(remove);
-                //         const target = e.target;
-                //         const personDivParent = target.parentElement;
-                //         // console.log(personDivParent);
-
-
-                //         const userId = personDivParent.querySelector('.user-id').textContent;
-                //         console.log(userId);
-
-
-                //         // await updateDoc(eventRef, {
-                //         //     invitedUsers: arrayRemove(userId)
-                //         // });
-
-                //         add.style.color = '#85c45e';
-
-                //         console.log('remove');
-
-
-                //     })
-                // })
             }
 
             searchElement.addEventListener("keyup", getAllUsers);
-
-
-
 
         } else {
 

@@ -34,7 +34,6 @@ const renderCalendar = () => {
         } else {
             days += `<div class="day">${i}<div class="event-in-calendar"></div></div>`;
         }
-        // monthDays.innerHTML = days;
     }
 
     for (let j = 1; j <= nextDays; j++) {

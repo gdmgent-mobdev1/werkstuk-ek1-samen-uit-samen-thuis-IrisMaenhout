@@ -1,9 +1,7 @@
 import elements from "../../element-factory";
-import signOut from "../../account/sign-out";
 import signOutFunction from "../../account/sign-out";
 import removeUser from "../../account/remove-account";
 import renderSmallPopup from "../popup-small-view";
-
 
 import {
     initializeApp
@@ -67,20 +65,3 @@ const firebaseAppConfig = getFirebaseConfig();
 initializeApp(firebaseAppConfig);
 
 export default renderContentAcountSettings;
-
-
-
-
-
-
-
-/* <header>
-        <i class="fas fa-chevron-left"></i>
-        <h2>Acount</h2>
-    </header>
-
-    <div class="content-acount-page">
-        <p>Peroonlijke gegevens</p>
-        <p>Uitloggen</p>
-        <p class="waring-text">Account verwijderen</p>
-    </div> */
