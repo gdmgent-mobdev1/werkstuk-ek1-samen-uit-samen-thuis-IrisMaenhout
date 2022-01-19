@@ -10,7 +10,7 @@ function renderHeaderAccount(text){
     });
 
     icon.addEventListener('click', ()=>{
-        window.location.href = window.location.href = window.history.back(1);
+        window.location.href = window.history.back(1);
     })
 
     const titleHeader = elements.createHeading({
