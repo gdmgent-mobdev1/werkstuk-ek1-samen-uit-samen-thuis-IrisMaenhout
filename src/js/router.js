@@ -66,7 +66,7 @@ function Router() {
 
     // div to display maboxmap
     const map = elements.createDiv({});
-
+    
 
     router.on(locationUrl, function () {
         spaContent.innerHTML = '';
@@ -185,10 +185,10 @@ function Router() {
 
                         if (invitedUsers != []) {
                             invitedUsers.forEach(async (user) => {
-                            
+
                                 const docUser = query(docUserRef, where("userId", "==", user));
                                 const querySnapshot = await getDocs(docUser);
-                                
+
                                 querySnapshot.forEach((documentUser) => {
                                     showInvitedUsers({
                                         displayName: documentUser.data().userName,
@@ -198,11 +198,11 @@ function Router() {
                             });
                         }
 
-                        if(acceptedUsers != []) {
+                        if (acceptedUsers != []) {
                             acceptedUsers.forEach(async (user) => {
                                 const docUser = query(docUserRef, where("userId", "==", user));
                                 const querySnapshot = await getDocs(docUser);
-                                
+
                                 querySnapshot.forEach((documentUser) => {
                                     showInvitedUsers({
                                         displayName: documentUser.data().userName,
@@ -215,10 +215,10 @@ function Router() {
                         }
 
                         if (rejectedUsers != []) {
-                            rejectedUsers.forEach(async(user) => {
+                            rejectedUsers.forEach(async (user) => {
                                 const docUser = query(docUserRef, where("userId", "==", user));
                                 const querySnapshot = await getDocs(docUser);
-                                
+
                                 querySnapshot.forEach((documentUser) => {
                                     showInvitedUsers({
                                         displayName: documentUser.data().userName,

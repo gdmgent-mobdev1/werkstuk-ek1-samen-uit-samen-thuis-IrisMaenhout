@@ -80,7 +80,7 @@ function updateEventInFirebase() {
                 title.value = docSnap.data().title;
 
                 const dateTime = document.getElementById('date');
-                dateTime.value = `${docSnap.data().date} ${docSnap.data().time}`
+                dateTime.value = `${docSnap.data().date} ${docSnap.data().time}`;
 
                 const upload = document.getElementById('upload').value;
 

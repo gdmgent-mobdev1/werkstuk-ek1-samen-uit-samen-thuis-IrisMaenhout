@@ -18,7 +18,7 @@ npm run build
 ## Introduction 
 Samen uit, samen thuis is a website that you can also install as a progressive web app on your mobile phone. It is important that you feel safe wherever you are but when you go out this can sometimes not be the case, that's why samen uit, samen thuis exist. It ensures that you can go to an event without having to worry because even if you walk alone on the street, you are in contact with your friends using the website and they can immediately see when you feel unsafe and vice versa.
 
-## Instalation
+## Installation
 Live site: https://samen-uit-samen-thuis.onrender.com/
 
 You can also install it as a progressive web app

@@ -19,7 +19,8 @@ import {
     addDoc,
     query,
     where,
-    onSnapshot
+    onSnapshot,
+    getDocs
 } from 'firebase/firestore';
 
 
@@ -117,7 +118,7 @@ function showEventsOnSpecificDay() {
             getMonthAndYear();
 
 
-            // ______save id of the event of today______
+            // ______save id of the event of today when the event starts on the current hour or is already started______
             let today = new Date();
             var date;
             if ((today.getMonth() + 1) < 10) {
@@ -126,26 +127,42 @@ function showEventsOnSpecificDay() {
 
                 } else {
                     date = `${today.getFullYear()}-0${today.getMonth()+1}-${today.getDate()}`;
-                 
+
                 }
-            }else{
-                
+            } else {
+
                 if (today.getDate() < 10) {
                     date = `${today.getFullYear()}-${today.getMonth()+1}-0${today.getDate()}`;
-                }else{
+                } else {
                     date = `${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()}`;
-                    
+
                 }
             }
-            
+
+            const currentHour = today.getHours();
+
             const eventTodayQuery = query(eventRef, where("date", "==", date));
 
-
+            sessionStorage.setItem('eventOfTheDay', null);
             const snapShot = onSnapshot(eventTodayQuery, (querySnapshot) => {
-                querySnapshot.forEach((doc) => {
-                    sessionStorage.setItem('eventOfTheDay', doc.id);
-                })
+                querySnapshot.forEach(async (doc) => {
+                    const timeEvent = doc.data().time;
+                    const arrayTimeEvent = timeEvent.split(':');
+                    const eventhour = parseInt(arrayTimeEvent[0]);
+                    
+
+                    if(doc.data().joinedUsers.includes(user.uid)){
+                        if (eventhour <= currentHour && currentHour <= eventhour + 5) {
+                            sessionStorage.setItem('eventOfTheDay', doc.id);
+                            window.location.href = `${window.location.protocol}//${window.location.host}/kaart`;
+                        }
+                        
+                    };
+
+                });
+                    
             });
+
 
 
             const arrows = document.querySelectorAll('.month i');
