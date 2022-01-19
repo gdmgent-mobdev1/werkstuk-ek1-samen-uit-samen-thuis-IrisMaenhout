@@ -15,6 +15,7 @@ import {
     getFirestore,
     collection,
     getDocs,
+    addDoc,
     doc,
     query,
     where
